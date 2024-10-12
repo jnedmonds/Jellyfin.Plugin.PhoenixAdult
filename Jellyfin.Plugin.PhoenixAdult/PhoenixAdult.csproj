@@ -26,7 +26,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Debug' or '$(Configuration)'=='Debug.Emby'">
-    <Optimize>True</Optimize>
+    <Optimize>False</Optimize>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
 
