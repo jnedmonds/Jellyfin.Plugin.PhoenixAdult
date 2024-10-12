@@ -28,11 +28,14 @@ namespace PhoenixAdult.Providers
 
         public static async Task<List<RemoteImageInfo>> GetActorPhotos(string name, CancellationToken cancellationToken)
         {
+            Logger.Debug($"ActorImageProvider-GetActorPhotos() Starting ********************");
+
             var tasks = new Dictionary<string, Task<string>>();
             var imageList = new List<RemoteImageInfo>();
 
             if (string.IsNullOrEmpty(name))
             {
+                Logger.Debug($"ActorImageProvider-GetActorPhotos() Leaving early ********************");
                 return imageList;
             }
 
@@ -65,7 +68,7 @@ namespace PhoenixAdult.Providers
             }
             catch (Exception e)
             {
-                Logger.Error($"GetActorPhotos error: \"{e}\"");
+                Logger.Error($"ActorImageProvider-GetActorPhotos() error: \"{e}\"");
 
                 await Analytics.Send(
                     new AnalyticsExeption
@@ -89,8 +92,10 @@ namespace PhoenixAdult.Providers
                         });
                     }
                 }
+                Logger.Debug($"PeoplesImages-GetActorPhotos() Found {imageList.Count()} images");
             }
 
+            Logger.Debug($"ActorImageProvider-GetActorPhotos() Leaving ********************");
             return imageList;
         }
 
@@ -108,10 +113,13 @@ namespace PhoenixAdult.Providers
         public async Task<IEnumerable<RemoteImageInfo>> GetImages(BaseItem item, CancellationToken cancellationToken)
 #endif
         {
+            Logger.Debug($"ActorImageProvider-GetImages() Starting ********************");
+
             var images = new List<RemoteImageInfo>();
 
             if (item == null)
             {
+                Logger.Debug($"ActorImageProvider-GetImages() Leaving early ********************");
                 return images;
             }
 
@@ -119,6 +127,7 @@ namespace PhoenixAdult.Providers
 
             if (item.ProviderIds.TryGetValue(this.Name, out var externalID))
             {
+                Logger.Debug($"ActorImageProvider-GetImages() externalID: {externalID}");
                 var curID = externalID.Split('#');
                 if (curID.Length > 2)
                 {
@@ -137,7 +146,7 @@ namespace PhoenixAdult.Providers
                             }
                             catch (Exception e)
                             {
-                                Logger.Error($"GetImages error: \"{e}\"");
+                                Logger.Error($"ActorImageProvider-GetImages() error: \"{e}\"");
 
                                 await Analytics.Send(
                                     new AnalyticsExeption
@@ -173,6 +182,10 @@ namespace PhoenixAdult.Providers
 
                 images = images.OrderByDescending(o => o.Height).ToList();
             }
+
+            Logger.Debug($"ActorImageProvider-GetImages() Found {images.Count()} images");
+
+            Logger.Debug($"ActorImageProvider-GetImages() Leaving ********************");
 
             return images;
         }

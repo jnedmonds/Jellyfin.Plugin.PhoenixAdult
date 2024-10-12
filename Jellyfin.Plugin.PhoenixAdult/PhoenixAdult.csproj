@@ -26,12 +26,12 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Debug' or '$(Configuration)'=='Debug.Emby'">
-    <Optimize>false</Optimize>
+    <Optimize>True</Optimize>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release' or '$(Configuration)'=='Release.Emby'">
-    <Optimize>true</Optimize>
+    <Optimize>True</Optimize>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <WarningsAsErrors>NU1605</WarningsAsErrors>
   </PropertyGroup>

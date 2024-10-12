@@ -26,10 +26,14 @@ namespace PhoenixAdult.Providers
 
         public async Task<IEnumerable<RemoteSearchResult>> GetSearchResults(PersonLookupInfo searchInfo, CancellationToken cancellationToken)
         {
+            Logger.Debug($"ActorProvider-GetSearchResults() Starting ********************");
+            Logger.Debug($"ActorProvider-GetSearchResults() actorName: {searchInfo.Name}");
+
             var result = new List<RemoteSearchResult>();
 
             if (searchInfo == null || searchInfo.ProviderIds.Any(o => !string.IsNullOrEmpty(o.Value)))
             {
+                Logger.Debug($"ActorProvider-GetSearchResults() Leaving early ********************");
                 return result;
             }
 
@@ -41,8 +45,8 @@ namespace PhoenixAdult.Providers
                 var site = Helper.GetSiteFromTitle(title);
                 string actorName = Helper.GetClearTitle(title, site.siteName);
 
-                Logger.Info($"site: {site.siteNum[0]}:{site.siteNum[1]} ({site.siteName})");
-                Logger.Info($"actorName: {actorName}");
+                Logger.Debug($"ActorProvider-GetSearchResults() site: {site.siteNum[0]}:{site.siteNum[1]} ({site.siteName})");
+                Logger.Debug($"ActorProvider-GetSearchResults() actorName: {actorName}");
 
                 DateTime? searchDateObj = null;
                 if (searchInfo.PremiereDate.HasValue)
@@ -57,7 +61,7 @@ namespace PhoenixAdult.Providers
                 var provider = Helper.GetProviderBySiteID(site.siteNum[0]);
                 if (provider != null)
                 {
-                    Logger.Info($"provider: {provider}");
+                    Logger.Debug($"ActorProvider-GetSearchResults() provider: {provider}");
 
                     try
                     {
@@ -65,7 +69,7 @@ namespace PhoenixAdult.Providers
                     }
                     catch (Exception e)
                     {
-                        Logger.Error($"Actor Search error: \"{e}\"");
+                        Logger.Error($"ActorProvider-GetSearchResults() Actor Search error: \"{e}\"");
 
                         await Analytics.Send(
                             new AnalyticsExeption
@@ -87,17 +91,27 @@ namespace PhoenixAdult.Providers
                         }
 
                         result = result.OrderByDescending(o => 100 - LevenshteinDistance.Calculate(searchInfo.Name, o.Name, StringComparison.OrdinalIgnoreCase)).ToList();
+
+                        Logger.Debug($"ActorProvider-GetSearchResults() Search results: Found {result.Count()} results for actorName: {actorName}");
+                    }
+                    else
+                    {
+                        Logger.Debug($"ActorProvider-GetSearchResults() Search results: No results found for actorName: {actorName}");
                     }
 
                     break;
                 }
             }
+            Logger.Debug($"ActorProvider-GetSearchResults() Leaving ********************");
 
             return result;
         }
 
         public async Task<MetadataResult<Person>> GetMetadata(PersonLookupInfo info, CancellationToken cancellationToken)
         {
+            Logger.Debug($"ActorProvider-GetMetadata() Starting ********************");
+            Logger.Debug($"ActorProvider-GetMetadata() actorName: {info.Name}");
+
             var result = new MetadataResult<Person>()
             {
                 HasMetadata = false,
@@ -106,6 +120,7 @@ namespace PhoenixAdult.Providers
 
             if (info == null)
             {
+                Logger.Debug($"ActorProvider-GetMetadata() Leaving early ********************");
                 return result;
             }
 
@@ -118,6 +133,7 @@ namespace PhoenixAdult.Providers
 
             if ((!sceneID.ContainsKey(this.Name) || curID == null || curID.Length < 3) && !Plugin.Instance.Configuration.DisableAutoIdentify)
             {
+                Logger.Debug($"ActorProvider-GetMetadata() Searching for actor");
                 var searchResults = await this.GetSearchResults(info, cancellationToken).ConfigureAwait(false);
                 if (searchResults.Any())
                 {
@@ -125,11 +141,13 @@ namespace PhoenixAdult.Providers
 
                     sceneID.TryGetValue(this.Name, out externalID);
                     curID = externalID.Split('#');
+                    Logger.Debug($"ActorProvider-GetMetadata() Found actor: {curID}: {searchResults.First().Name}");
                 }
             }
 
             if (curID == null)
             {
+                Logger.Debug($"ActorProvider-GetMetadata() Cannot find actor");
                 return result;
             }
 
@@ -138,7 +156,7 @@ namespace PhoenixAdult.Providers
             var provider = Helper.GetProviderBySiteID(siteNum[0]);
             if (provider != null)
             {
-                Logger.Info($"PhoenixAdult Actor ID: {externalID}");
+                Logger.Debug($"ActorProvider-GetMetadata()PhoenixAdult Actor ID: {externalID}");
 
                 MetadataResult<BaseItem> res = null;
                 try
@@ -147,7 +165,7 @@ namespace PhoenixAdult.Providers
                 }
                 catch (Exception e)
                 {
-                    Logger.Error($"Actor Update error: \"{e}\"");
+                    Logger.Error($"ActorProvider-GetMetadata()Actor Update error: \"{e}\"");
 
                     await Analytics.Send(
                         new AnalyticsExeption
@@ -167,6 +185,8 @@ namespace PhoenixAdult.Providers
 
                 if (result.HasMetadata)
                 {
+                    Logger.Debug($"ActorProvider-GetMetadata() Metadata found.");
+
                     result.Item.ProviderIds.Update(this.Name, sceneID[this.Name]);
                     result.Item.ProviderIds.Update(this.Name + "URL", result.Item.ExternalId);
 
@@ -215,8 +235,14 @@ namespace PhoenixAdult.Providers
                     {
                         result.Item.ProductionYear = result.Item.PremiereDate.Value.Year;
                     }
+                    else
+                    {
+                        Logger.Debug($"ActorProvider-GetMetadata() No Metadata found.");
+                    }
                 }
             }
+
+            Logger.Debug($"ActorProvider-GetMetadata() Leaving ********************");
 
             return result;
         }

@@ -32,10 +32,14 @@ namespace PhoenixAdult.Providers
 
         public async Task<IEnumerable<RemoteSearchResult>> GetSearchResults(MovieInfo searchInfo, CancellationToken cancellationToken)
         {
+            Logger.Debug($"MovieProvider-GetSearchResults() Starting ********************");
+            Logger.Debug($"MovieProvider-GetSearchResults() searchInfo.Name: {searchInfo.Name}");
+
             var result = new List<RemoteSearchResult>();
 
             if (searchInfo == null || string.IsNullOrEmpty(searchInfo.Name))
             {
+                Logger.Debug($"MovieProvider-GetSearchResults() Leaving early empty search name ********************");
                 return result;
             }
 
@@ -82,7 +86,7 @@ namespace PhoenixAdult.Providers
 
                 if (!string.IsNullOrEmpty(newTitle) && !newTitle.Equals(searchInfo.Name, StringComparison.OrdinalIgnoreCase))
                 {
-                    Logger.Info($"newTitle: {newTitle}");
+                    Logger.Debug($"MovieProvider-GetSearchResults() newTitle: {newTitle}");
 
                     title = Helper.ReplaceAbbrieviation(newTitle);
                     site = Helper.GetSiteFromTitle(title);
@@ -90,6 +94,7 @@ namespace PhoenixAdult.Providers
 
                 if (site.siteNum == null)
                 {
+                    Logger.Debug($"MovieProvider-GetSearchResults() cannot find site");
                     return result;
                 }
             }
@@ -123,14 +128,14 @@ namespace PhoenixAdult.Providers
                 return result;
             }
 
-            Logger.Info($"site: {site.siteNum[0]}:{site.siteNum[1]} ({site.siteName})");
-            Logger.Info($"searchTitle: {searchTitle}");
-            Logger.Info($"searchDate: {searchDate}");
+            Logger.Debug($"MovieProvider-GetSearchResults() site: {site.siteNum[0]}:{site.siteNum[1]} ({site.siteName})");
+            Logger.Debug($"MovieProvider-GetSearchResults() searchTitle: {searchTitle}");
+            Logger.Debug($"MovieProvider-GetSearchResults() searchDate: {searchDate}");
 
             var provider = Helper.GetProviderBySiteID(site.siteNum[0]);
             if (provider != null)
             {
-                Logger.Info($"provider: {provider}");
+                Logger.Debug($"MovieProvider-GetSearchResults() provider: {provider}");
 
                 try
                 {
@@ -138,7 +143,7 @@ namespace PhoenixAdult.Providers
                 }
                 catch (Exception e)
                 {
-                    Logger.Error($"Search error: \"{e}\"");
+                    Logger.Error($"MovieProvider-GetSearchResults() Search error: \"{e}\"");
 
                     await Analytics.Send(
                         new AnalyticsExeption
@@ -154,6 +159,8 @@ namespace PhoenixAdult.Providers
 
                 if (result.Any())
                 {
+                    Logger.Debug($"MovieProvider-GetSearchResults() Found scenes for searchTitle: {searchTitle}");
+
                     foreach (var scene in result)
                     {
                         scene.ProviderIds[this.Name] = $"{site.siteNum[0]}#{site.siteNum[1]}#" + scene.ProviderIds[this.Name];
@@ -162,6 +169,8 @@ namespace PhoenixAdult.Providers
                         {
                             scene.ProductionYear = scene.PremiereDate.Value.Year;
                         }
+
+                        Logger.Debug($"MovieProvider-GetSearchResults() {scene.ProviderIds[this.Name]}: {scene.Name}");
                     }
 
                     if (result.Any(scene => scene.IndexNumber.HasValue))
@@ -176,14 +185,24 @@ namespace PhoenixAdult.Providers
                     {
                         result = result.OrderByDescending(o => 100 - LevenshteinDistance.Calculate(searchTitle, Helper.GetClearTitle(o.Name), StringComparison.OrdinalIgnoreCase)).ToList();
                     }
+                    Logger.Debug($"MovieProvider-GetSearchResults() Search results: Found {result.Count()} results for searchTitle: {searchTitle}");
+                }
+                else
+                {
+                    Logger.Debug($"MovieProvider-GetSearchResults() Search results: No results found for searchTitle: {searchTitle}");
                 }
             }
+
+            Logger.Debug($"MovieProvider-GetSearchResults() Leaving  ********************");
 
             return result;
         }
 
         public async Task<MetadataResult<Movie>> GetMetadata(MovieInfo info, CancellationToken cancellationToken)
         {
+            Logger.Debug($"MovieProvider-GetMetadata() Starting ********************");
+            Logger.Debug($"MovieProvider-GetMetadata() info.Name: {info.Name}");
+
             var result = new MetadataResult<Movie>
             {
                 HasMetadata = false,
@@ -192,6 +211,7 @@ namespace PhoenixAdult.Providers
 
             if (info == null)
             {
+                Logger.Debug($"MovieProvider-GetMetadata() Leaving early ********************");
                 return result;
             }
 
@@ -214,6 +234,8 @@ namespace PhoenixAdult.Providers
 
             if ((!sceneID.ContainsKey(this.Name) || curID == null || curID.Length < 3) && !Plugin.Instance.Configuration.DisableAutoIdentify)
             {
+                Logger.Debug($"MovieProvider-GetMetadata() Searching for scene");
+
                 var searchResults = await this.GetSearchResults(info, cancellationToken).ConfigureAwait(false);
                 if (searchResults.Any())
                 {
@@ -237,7 +259,12 @@ namespace PhoenixAdult.Providers
 
             if (curID == null)
             {
+                Logger.Debug($"MovieProvider-GetMetadata() Cannot find scene");
                 return result;
+            }
+            else
+            {
+                Logger.Debug($"MovieProvider-GetMetadata() PhoenixAdultID: {curID[0]}:{curID[1]}:{curID[2]}");
             }
 
             var siteNum = new int[2] { int.Parse(curID[0], CultureInfo.InvariantCulture), int.Parse(curID[1], CultureInfo.InvariantCulture) };
@@ -245,7 +272,7 @@ namespace PhoenixAdult.Providers
             var provider = Helper.GetProviderBySiteID(siteNum[0]);
             if (provider != null)
             {
-                Logger.Info($"PhoenixAdult ID: {externalID}");
+                Logger.Debug($"PhoenixAdult ID: {externalID}");
 
                 MetadataResult<BaseItem> res = null;
                 try
@@ -254,7 +281,7 @@ namespace PhoenixAdult.Providers
                 }
                 catch (Exception e)
                 {
-                    Logger.Error($"Update error: \"{e}\"");
+                    Logger.Error($"MovieProvider-GetMetadata() Update error: \"{e}\"");
 
                     await Analytics.Send(
                         new AnalyticsExeption
@@ -277,6 +304,9 @@ namespace PhoenixAdult.Providers
 
                 if (result.HasMetadata)
                 {
+                    Logger.Debug($"MovieProvider-GetMetadata() Metadata found.");
+                    Logger.Debug($"MovieProvider-GetMetadata() Adding provider ID: {this.Name}:{sceneID[this.Name]}");
+
                     result.Item.OfficialRating = "XXX";
                     result.Item.ProviderIds.Update(this.Name, sceneID[this.Name]);
 
@@ -304,6 +334,11 @@ namespace PhoenixAdult.Providers
                         }
                     }
 
+                    if (newStudios.Count() > 0)
+                    {
+                        Logger.Debug($"MovieProvider-GetMetadata() Found {newStudios.Count()} studios");
+                    }
+
                     result.Item.Studios = newStudios.ToArray();
 
                     if (!result.Item.PremiereDate.HasValue)
@@ -319,19 +354,28 @@ namespace PhoenixAdult.Providers
                     if (result.People != null && result.People.Any())
                     {
                         result.People = Actors.Cleanup(result);
+                        Logger.Debug($"MovieProvider-GetMetadata() Found {result.People.Count()} actors");
                     }
 
                     if (result.Item.Genres != null && result.Item.Genres.Any())
                     {
                         result.Item.Genres = Genres.Cleanup(result.Item.Genres, result.Item.Name, result.People);
+                        Logger.Debug($"MovieProvider-GetMetadata() Found {result.Item.Genres.Count()} genres");
                     }
 
                     if (!string.IsNullOrEmpty(result.Item.ExternalId))
                     {
                         result.Item.ProviderIds.Update(this.Name + "URL", result.Item.ExternalId);
+                        Logger.Debug($"MovieProvider-GetMetadata() Found {result.Item.ExternalId} URL");
                     }
                 }
+                else
+                {
+                    Logger.Debug($"MovieProvider-GetMetadata() No Metadata found.");
+                }
             }
+
+            Logger.Debug($"MovieProvider-GetMetadata() Leaving ********************");
 
             return result;
         }

@@ -40,23 +40,30 @@ namespace PhoenixAdult.Providers
         public async Task<IEnumerable<RemoteImageInfo>> GetImages(BaseItem item, CancellationToken cancellationToken)
 #endif
         {
+            Logger.Debug($"MovieImageProvider-GetImages() Starting ********************");
+
             IEnumerable<RemoteImageInfo> images = new List<RemoteImageInfo>();
 
             if (item == null)
             {
+                Logger.Debug($"MovieImageProvider-GetImages() Leaving early ********************");
                 return images;
             }
 
             if (!item.ProviderIds.TryGetValue(this.Name, out var externalID))
             {
+                Logger.Debug($"MovieImageProvider-GetImages() Leaving early ********************");
                 return images;
             }
 
             var curID = externalID.Split('#');
             if (curID.Length < 3)
             {
+                Logger.Debug($"MovieImageProvider-GetImages() Leaving early ********************");
                 return images;
             }
+
+            Logger.Debug($"MovieImageProvider-GetImages() externalID: {externalID}");
 
             var siteNum = new int[2] { int.Parse(curID[0], CultureInfo.InvariantCulture), int.Parse(curID[1], CultureInfo.InvariantCulture) };
 
@@ -65,11 +72,12 @@ namespace PhoenixAdult.Providers
             {
                 try
                 {
+                    Logger.Debug($"MovieImageProvider-GetImages() Searching for images");
                     images = await provider.GetImages(siteNum, curID.Skip(2).ToArray(), item, cancellationToken).ConfigureAwait(false);
                 }
                 catch (Exception e)
                 {
-                    Logger.Error($"GetImages error: \"{e}\"");
+                    Logger.Error($"MovieImageProvider-GetImages() error: \"{e}\"");
 
                     await Analytics.Send(
                         new AnalyticsExeption
@@ -80,8 +88,13 @@ namespace PhoenixAdult.Providers
                         }, cancellationToken).ConfigureAwait(false);
                 }
 
+                Logger.Debug($"MovieImageProvider-GetImages() Search results: Found {images.Count()} images");
+
                 images = await ImageHelper.GetImagesSizeAndValidate(images, cancellationToken).ConfigureAwait(false);
+
+                Logger.Debug($"MovieImageProvider-GetImages() Clear images returned: {images.Count()} images");
             }
+            Logger.Debug($"MovieImageProvider-GetImages() Leaving ********************");
 
             return images;
         }
