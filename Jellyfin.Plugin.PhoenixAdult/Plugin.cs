@@ -5,6 +5,10 @@ using MediaBrowser.Common.Plugins;
 using MediaBrowser.Model.Plugins;
 using MediaBrowser.Model.Serialization;
 using PhoenixAdult.Configuration;
+using System.IO;
+using MediaBrowser.Model.Drawing;
+
+
 
 #if __EMBY__
 using MediaBrowser.Common.Net;
@@ -20,7 +24,7 @@ using Microsoft.Extensions.Logging;
 
 namespace PhoenixAdult
 {
-    public class Plugin : BasePlugin<PluginConfiguration>, IHasWebPages
+    public class Plugin : BasePlugin<PluginConfiguration>, IHasWebPages, IHasThumbImage
     {
 #if __EMBY__
         public Plugin(IApplicationPaths applicationPaths, IXmlSerializer xmlSerializer, IHttpClient http, ILogManager logger)
@@ -62,16 +66,28 @@ namespace PhoenixAdult
 
         public override string Name => "PhoenixAdult";
 
-        public override Guid Id => Guid.Parse("dc40637f-6ebd-4a34-b8a1-8799629120cf");
+        public override Guid Id => Guid.Parse("91FDA366-558B-4A18-AAB8-2DC8627D2EFC");
 
-        public IEnumerable<PluginPageInfo> GetPages()
-            => new[]
+        public Stream GetThumbImage()
+        {
+            var type = GetType();
+            return type.Assembly.GetManifestResourceStream(type.Namespace + ".plugin.png");
+        }
+        public ImageFormat ThumbImageFormat => ImageFormat.Png;
+
+        public IEnumerable<PluginPageInfo> GetPages() => new[]
+       {
+            new PluginPageInfo
             {
-                new PluginPageInfo
-                {
-                    Name = this.Name,
-                    EmbeddedResourcePath = $"{this.GetType().Namespace}.Configuration.configPage.html",
-                },
-            };
+                Name = "phoenixadult",
+                EmbeddedResourcePath = GetType().Namespace + ".Configuration.configPage.html",
+                DisplayName = "Phoenix Adult",
+            },
+            new PluginPageInfo
+            {
+                Name = "phoenixadultjs",
+                EmbeddedResourcePath = GetType().Namespace + ".Configuration.configPage.js"
+            }
+        };
     }
 }

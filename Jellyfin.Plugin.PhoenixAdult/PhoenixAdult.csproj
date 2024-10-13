@@ -4,9 +4,9 @@
     <TargetFramework Condition="'$(Configuration)'=='Debug' or '$(Configuration)'=='Release'">net8.0</TargetFramework>
     <TargetFramework Condition="'$(Configuration)'=='Debug.Emby' or '$(Configuration)'=='Release.Emby'">netstandard2.1</TargetFramework>
     <RootNamespace>PhoenixAdult</RootNamespace>
-    <AssemblyVersion>10.8.0.0</AssemblyVersion>
-    <FileVersion>10.8.0.0</FileVersion>
-    <InformationalVersion>10.8.0.0</InformationalVersion>
+    <AssemblyVersion>10.8.0.1</AssemblyVersion>
+    <FileVersion>10.8.0.1</FileVersion>
+    <InformationalVersion>10.8.0.1</InformationalVersion>
     <SourceRevisionId>build$([System.DateTime]::UtcNow.ToString("yyyy-MM-ddTHH:mm:ss:fffZ"))</SourceRevisionId>
     <Copyright>© DirtyRacer</Copyright>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -66,7 +66,7 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup Condition="'$(Configuration)'=='Release' or '$(Configuration)'=='Release.Emby'">
+  <ItemGroup>
     <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.34">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -75,7 +75,15 @@
 
   <ItemGroup>
     <None Remove="Configuration\configPage.html" />
+    <None Remove="Configuration\configPage.js" />
+    <None Remove="plugin.png" />
     <EmbeddedResource Include="Configuration\configPage.html" />
+    <EmbeddedResource Include="Configuration\configPage.js" />
+    <EmbeddedResource Include="plugin.png" />
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="cmd /C del /F &quot;$(SolutionDir)..\embyserver-win-x64-4.8.10.0\programdata\plugins\$(TargetFileName)&quot;&#xD;&#xA;cmd /C copy /Y &quot;$(TargetPath)&quot; &quot;$(SolutionDir)..\embyserver-win-x64-4.8.10.0\programdata\plugins\&quot; &#xD;&#xA;cmd /C copy /Y &quot;$(OutDir)$(SolutionName).pdb&quot; &quot;$(SolutionDir)..\embyserver-win-x64-4.8.10.0\programdata\plugins\&quot; " />
+  </Target>
 
 </Project>

@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Profile 1": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\Jamie\\OneDrive\\Software\\Programming\\Projects\\Visual Studio 2022\\Projects\\embyserver-win-x64-4.8.10.0\\system\\EmbyServer.exe",
+      "workingDirectory": "C:\\Users\\Jamie\\OneDrive\\Software\\Programming\\Projects\\Visual Studio 2022\\Projects\\embyserver-win-x64-4.8.10.0"
+    }
+  }
+}
