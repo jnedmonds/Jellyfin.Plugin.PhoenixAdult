@@ -1,3 +1,6 @@
+using Jellyfin.Data.Enums;
+using Jellyfin.Plugin.PhoenixAdult.Configuration;
+using Jellyfin.Plugin.PhoenixAdult.Helpers.Utils;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -6,15 +9,8 @@ using System.Net;
 using MediaBrowser.Controller.Entities;
 using MediaBrowser.Controller.Entities.Movies;
 using MediaBrowser.Controller.Providers;
-using PhoenixAdult.Configuration;
-using PhoenixAdult.Helpers.Utils;
 
-#if __EMBY__
-#else
-using Jellyfin.Data.Enums;
-#endif
-
-namespace PhoenixAdult.Helpers
+namespace Jellyfin.Plugin.PhoenixAdult.Helpers
 {
     internal static class Actors
     {
@@ -42,13 +38,10 @@ namespace PhoenixAdult.Helpers
                 newPeople.Name = newPeople.Name.Replace("™", string.Empty, StringComparison.OrdinalIgnoreCase);
                 newPeople.Name = newPeople.Name.Trim();
 
-#if __EMBY__
-#else
                 if (string.IsNullOrEmpty(newPeople.Type.ToString()))
                 {
                     newPeople.Type = PersonKind.Actor;
                 }
-#endif
                 if (!newPeoples.Any(o => o.Name == newPeople.Name))
                 {
                     newPeoples.Add(newPeople);

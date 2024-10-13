@@ -1,3 +1,5 @@
+using Jellyfin.Plugin.PhoenixAdult.Helpers;
+using Jellyfin.Plugin.PhoenixAdult.Helpers.Utils;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -14,10 +16,8 @@ using MediaBrowser.Model.Entities;
 using MediaBrowser.Model.Providers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using PhoenixAdult.Helpers;
-using PhoenixAdult.Helpers.Utils;
 
-namespace PhoenixAdult.Sites
+namespace Jellyfin.Plugin.PhoenixAdult.Sites
 {
     public class NetworkGammaEnt : IProviderBase
     {

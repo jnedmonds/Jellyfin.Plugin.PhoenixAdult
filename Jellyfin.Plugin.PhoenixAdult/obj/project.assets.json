@@ -1,7 +1,16 @@
 {
   "version": 3,
   "targets": {
-    ".NETStandard,Version=v2.1": {
+    "net8.0": {
+      "Diacritics/3.3.29": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Diacritics.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Diacritics.dll": {}
+        }
+      },
       "FlareSolverrSharp/3.0.7": {
         "type": "package",
         "dependencies": {
@@ -49,44 +58,570 @@
           "lib/netstandard2.0/MihaZupan.HttpToSocks5Proxy.dll": {}
         }
       },
+      "ICU4N/60.1.0-alpha.356": {
+        "type": "package",
+        "dependencies": {
+          "J2N": "2.0.0",
+          "Microsoft.Extensions.Caching.Memory": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/ICU4N.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/ICU4N.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "ICU4N.Transliterator/60.1.0-alpha.356": {
+        "type": "package",
+        "dependencies": {
+          "ICU4N": "60.1.0-alpha.356"
+        },
+        "compile": {
+          "lib/netstandard2.0/ICU4N.Transliterator.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/ICU4N.Transliterator.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "ILRepack.Lib.MSBuild.Task/2.0.34": {
         "type": "package",
         "build": {
           "build/ILRepack.Lib.MSBuild.Task.targets": {}
         }
       },
-      "MediaBrowser.Common/4.7.9": {
+      "J2N/2.0.0": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/MediaBrowser.Common.dll": {
-            "related": ".pdb"
-          },
-          "lib/netstandard2.0/MediaBrowser.Model.dll": {
-            "related": ".pdb"
+          "lib/net6.0/J2N.dll": {
+            "related": ".xml"
           }
         },
         "runtime": {
-          "lib/netstandard2.0/MediaBrowser.Common.dll": {
-            "related": ".pdb"
-          },
-          "lib/netstandard2.0/MediaBrowser.Model.dll": {
-            "related": ".pdb"
+          "lib/net6.0/J2N.dll": {
+            "related": ".xml"
           }
         }
       },
-      "MediaBrowser.Server.Core/4.7.9": {
+      "Jellyfin.Common/10.9.7": {
         "type": "package",
         "dependencies": {
-          "MediaBrowser.Common": "4.7.9"
+          "Jellyfin.Model": "10.9.7",
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.1"
         },
         "compile": {
-          "lib/netstandard2.0/MediaBrowser.Controller.dll": {
-            "related": ".pdb"
+          "lib/net8.0/MediaBrowser.Common.dll": {
+            "related": ".xml"
           }
         },
         "runtime": {
-          "lib/netstandard2.0/MediaBrowser.Controller.dll": {
-            "related": ".pdb"
+          "lib/net8.0/MediaBrowser.Common.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "Jellyfin.Controller/10.9.7": {
+        "type": "package",
+        "dependencies": {
+          "Jellyfin.Common": "10.9.7",
+          "Jellyfin.Model": "10.9.7",
+          "Jellyfin.Naming": "10.9.7",
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Configuration.Binder": "8.0.1",
+          "System.Threading.Tasks.Dataflow": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/MediaBrowser.Controller.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MediaBrowser.Controller.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Jellyfin.Data/10.9.7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/Jellyfin.Data.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Jellyfin.Data.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Jellyfin.Extensions/10.9.7": {
+        "type": "package",
+        "dependencies": {
+          "Diacritics": "3.3.29",
+          "ICU4N.Transliterator": "60.1.0-alpha.356"
+        },
+        "compile": {
+          "lib/net8.0/Jellyfin.Extensions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Jellyfin.Extensions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Jellyfin.Model/10.9.7": {
+        "type": "package",
+        "dependencies": {
+          "Jellyfin.Data": "10.9.7",
+          "Jellyfin.Extensions": "10.9.7",
+          "Microsoft.AspNetCore.HttpOverrides": "2.2.0",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.1",
+          "System.Globalization": "4.3.0",
+          "System.Text.Json": "8.0.3"
+        },
+        "compile": {
+          "lib/net8.0/MediaBrowser.Model.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MediaBrowser.Model.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Jellyfin.Naming/10.9.7": {
+        "type": "package",
+        "dependencies": {
+          "Jellyfin.Common": "10.9.7",
+          "Jellyfin.Model": "10.9.7"
+        },
+        "compile": {
+          "lib/net8.0/Emby.Naming.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Emby.Naming.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Http.Abstractions/2.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "2.2.0",
+          "System.Text.Encodings.Web": "4.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Http.Extensions/2.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
+          "Microsoft.Extensions.FileProviders.Abstractions": "2.2.0",
+          "Microsoft.Net.Http.Headers": "2.2.0",
+          "System.Buffers": "4.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Extensions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Extensions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Http.Features/2.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "2.2.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.HttpOverrides/2.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Extensions": "2.2.0",
+          "Microsoft.Extensions.Logging.Abstractions": "2.2.0",
+          "Microsoft.Extensions.Options": "2.2.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.HttpOverrides.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.HttpOverrides.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.CodeAnalysis.NetAnalyzers/8.0.0": {
+        "type": "package",
+        "build": {
+          "buildTransitive/Microsoft.CodeAnalysis.NetAnalyzers.props": {},
+          "buildTransitive/Microsoft.CodeAnalysis.NetAnalyzers.targets": {}
+        }
+      },
+      "Microsoft.Extensions.Caching.Abstractions/2.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Caching.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Caching.Abstractions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Extensions.Caching.Memory/2.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Caching.Abstractions": "2.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0",
+          "Microsoft.Extensions.Options": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Extensions.Configuration/8.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Primitives": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Configuration.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Configuration.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Configuration.Abstractions/8.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Configuration.Binder/8.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Configuration.Binder.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Configuration.Binder.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/netstandard2.0/Microsoft.Extensions.Configuration.Binder.targets": {}
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection/8.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.DependencyInjection.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.DependencyInjection.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Diagnostics/8.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "8.0.0",
+          "Microsoft.Extensions.Diagnostics.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Diagnostics.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Diagnostics.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Diagnostics.Abstractions/8.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Options": "8.0.0",
+          "System.Diagnostics.DiagnosticSource": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Diagnostics.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Diagnostics.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.FileProviders.Abstractions/2.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "2.2.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Extensions.Http/8.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Diagnostics": "8.0.0",
+          "Microsoft.Extensions.Logging": "8.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Options": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Http.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Http.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Logging/8.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "8.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Options": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Logging.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Logging.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Logging.Abstractions/8.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.1"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/Microsoft.Extensions.Logging.Abstractions.targets": {}
+        }
+      },
+      "Microsoft.Extensions.Options/8.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Primitives": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Options.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Options.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/Microsoft.Extensions.Options.targets": {}
+        }
+      },
+      "Microsoft.Extensions.Options.ConfigurationExtensions/8.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Configuration.Binder": "8.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Options": "8.0.0",
+          "Microsoft.Extensions.Primitives": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Primitives/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Primitives.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Primitives.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "Microsoft.Net.Http.Headers/2.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "2.2.0",
+          "System.Buffers": "4.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Net.Http.Headers.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Net.Http.Headers.dll": {
+            "related": ".xml"
           }
         }
       },
@@ -173,12 +708,12 @@
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
             "related": ".xml"
           }
         }
@@ -361,12 +896,12 @@
           "SkiaSharp.NativeAssets.macOS": "2.88.8"
         },
         "compile": {
-          "lib/netstandard2.1/SkiaSharp.dll": {
+          "lib/net6.0/SkiaSharp.dll": {
             "related": ".pdb;.xml"
           }
         },
         "runtime": {
-          "lib/netstandard2.1/SkiaSharp.dll": {
+          "lib/net6.0/SkiaSharp.dll": {
             "related": ".pdb;.xml"
           }
         }
@@ -374,10 +909,10 @@
       "SkiaSharp.NativeAssets.macOS/2.88.8": {
         "type": "package",
         "compile": {
-          "lib/netstandard1.3/_._": {}
+          "lib/net6.0/_._": {}
         },
         "runtime": {
-          "lib/netstandard1.3/_._": {}
+          "lib/net6.0/_._": {}
         },
         "runtimeTargets": {
           "runtimes/osx/native/libSkiaSharp.dylib": {
@@ -389,10 +924,10 @@
       "SkiaSharp.NativeAssets.Win32/2.88.8": {
         "type": "package",
         "compile": {
-          "lib/netstandard1.3/_._": {}
+          "lib/net6.0/_._": {}
         },
         "runtime": {
-          "lib/netstandard1.3/_._": {}
+          "lib/net6.0/_._": {}
         },
         "runtimeTargets": {
           "runtimes/win-arm64/native/libSkiaSharp.dll": {
@@ -409,6 +944,9 @@
           }
         }
       },
+      "StyleCop.Analyzers/1.1.118": {
+        "type": "package"
+      },
       "System.AppContext/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -423,20 +961,13 @@
           "lib/netstandard1.6/System.AppContext.dll": {}
         }
       },
-      "System.Buffers/4.3.0": {
+      "System.Buffers/4.5.0": {
         "type": "package",
-        "dependencies": {
-          "System.Diagnostics.Debug": "4.3.0",
-          "System.Diagnostics.Tracing": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Threading": "4.3.0"
-        },
         "compile": {
-          "lib/netstandard1.1/_._": {}
+          "ref/netcoreapp2.0/_._": {}
         },
         "runtime": {
-          "lib/netstandard1.1/System.Buffers.dll": {}
+          "lib/netcoreapp2.0/_._": {}
         }
       },
       "System.Collections/4.3.0": {
@@ -503,24 +1034,20 @@
           }
         }
       },
-      "System.Diagnostics.DiagnosticSource/4.3.0": {
+      "System.Diagnostics.DiagnosticSource/8.0.0": {
         "type": "package",
-        "dependencies": {
-          "System.Collections": "4.3.0",
-          "System.Diagnostics.Tracing": "4.3.0",
-          "System.Reflection": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Threading": "4.3.0"
-        },
         "compile": {
-          "lib/netstandard1.3/_._": {
+          "lib/net8.0/System.Diagnostics.DiagnosticSource.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {
+          "lib/net8.0/System.Diagnostics.DiagnosticSource.dll": {
             "related": ".xml"
           }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Diagnostics.Tools/4.3.0": {
@@ -1020,9 +1547,7 @@
           "System.Runtime.Handles": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.5/System.Runtime.InteropServices.dll": {
-            "related": ".xml"
-          }
+          "ref/netcoreapp1.1/System.Runtime.InteropServices.dll": {}
         }
       },
       "System.Runtime.InteropServices.RuntimeInformation/4.3.0": {
@@ -1318,20 +1843,54 @@
           }
         }
       },
+      "System.Text.Encodings.Web/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/System.Text.Encodings.Web.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Text.Encodings.Web.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/browser/lib/net8.0/System.Text.Encodings.Web.dll": {
+            "assetType": "runtime",
+            "rid": "browser"
+          }
+        }
+      },
+      "System.Text.Json/8.0.3": {
+        "type": "package",
+        "dependencies": {
+          "System.Text.Encodings.Web": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/System.Text.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Text.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/System.Text.Json.targets": {}
+        }
+      },
       "System.Text.RegularExpressions/4.3.0": {
         "type": "package",
         "dependencies": {
-          "System.Collections": "4.3.0",
-          "System.Globalization": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Threading": "4.3.0"
+          "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.6/System.Text.RegularExpressions.dll": {
-            "related": ".xml"
-          }
+          "ref/netcoreapp1.1/System.Text.RegularExpressions.dll": {}
         },
         "runtime": {
           "lib/netstandard1.6/System.Text.RegularExpressions.dll": {}
@@ -1363,6 +1922,22 @@
           "ref/netstandard1.3/System.Threading.Tasks.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "System.Threading.Tasks.Dataflow/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/System.Threading.Tasks.Dataflow.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Threading.Tasks.Dataflow.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Threading.Tasks.Extensions/4.3.0": {
@@ -1452,6 +2027,22 @@
     }
   },
   "libraries": {
+    "Diacritics/3.3.29": {
+      "sha512": "yrbxg/3T2af17np2XIjRbRXWM1OdtwJof9xg3qRj7D3s9AYkuEpD4UMCsNvnj//GHvzN9hw79ceh4z8Fhlvvhw==",
+      "type": "package",
+      "path": "diacritics/3.3.29",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "diacritics.3.3.29.nupkg.sha512",
+        "diacritics.nuspec",
+        "lib/net45/Diacritics.dll",
+        "lib/netstandard1.2/Diacritics.dll",
+        "lib/netstandard2.0/Diacritics.dll",
+        "lib/netstandard2.1/Diacritics.dll"
+      ]
+    },
     "FlareSolverrSharp/3.0.7": {
       "sha512": "Tnyn1haCdwXdg9aLTCjAb7LUB/DFd9Y0uoANCVj4wr61B/hyoXKohDPB52cJXqEHkOzZ7sma7U6bqcIcNfXQ7Q==",
       "type": "package",
@@ -1541,6 +2132,44 @@
         "lib/netstandard2.0/MihaZupan.HttpToSocks5Proxy.dll"
       ]
     },
+    "ICU4N/60.1.0-alpha.356": {
+      "sha512": "YMZtDnjcqWzziOKiE7w6Ma7Rl5vuFDxzOsUlHh1QyfghbNEIZQOLRs9MMfwCWAjX6n9UitrF6vLXy55Z5q+4Fg==",
+      "type": "package",
+      "path": "icu4n/60.1.0-alpha.356",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "icu4n.60.1.0-alpha.356.nupkg.sha512",
+        "icu4n.nuspec",
+        "lib/net40/ICU4N.dll",
+        "lib/net40/ICU4N.xml",
+        "lib/net451/ICU4N.dll",
+        "lib/net451/ICU4N.xml",
+        "lib/netstandard2.0/ICU4N.dll",
+        "lib/netstandard2.0/ICU4N.xml",
+        "unicode-icon-128x128.jpg"
+      ]
+    },
+    "ICU4N.Transliterator/60.1.0-alpha.356": {
+      "sha512": "lFOSO6bbEtB6HkWMNDJAq+rFwVyi9g6xVc5O/2xHa6iZnV7wLVDqCbaQ4W4vIeBSQZAafqhxciaEkmAvSdzlCg==",
+      "type": "package",
+      "path": "icu4n.transliterator/60.1.0-alpha.356",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "icu4n.transliterator.60.1.0-alpha.356.nupkg.sha512",
+        "icu4n.transliterator.nuspec",
+        "lib/net40/ICU4N.Transliterator.dll",
+        "lib/net40/ICU4N.Transliterator.xml",
+        "lib/net451/ICU4N.Transliterator.dll",
+        "lib/net451/ICU4N.Transliterator.xml",
+        "lib/netstandard2.0/ICU4N.Transliterator.dll",
+        "lib/netstandard2.0/ICU4N.Transliterator.xml",
+        "unicode-icon-128x128.jpg"
+      ]
+    },
     "ILRepack.Lib.MSBuild.Task/2.0.34": {
       "sha512": "L8TGuOMXjjT9tHf55bruPBBxJ9y17dLTf27cxPox6hhbdxFNNe7nwKzgYw6r/DZOH8O5qRxKpLeW/y80Gz45cg==",
       "type": "package",
@@ -1554,32 +2183,1336 @@
         "ilrepack.lib.msbuild.task.nuspec"
       ]
     },
-    "MediaBrowser.Common/4.7.9": {
-      "sha512": "fmxyGZn/WkrFGpYRcCtaQS+lr9K/Js56SKLRoL8t4tcYqKM8ZdGI9eMhqRhNg2SiSxAVLQEtoRgx1gFYHxkAFw==",
+    "J2N/2.0.0": {
+      "sha512": "M5bwDajAARZiyqupU+rHQJnsVLxNBOHJ8vKYHd8LcLIb1FgLfzzcJvc31Qo5Xz/GEHFjDF9ScjKL/ks/zRTXuA==",
       "type": "package",
-      "path": "mediabrowser.common/4.7.9",
+      "path": "j2n/2.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/netstandard2.0/MediaBrowser.Common.dll",
-        "lib/netstandard2.0/MediaBrowser.Common.pdb",
-        "lib/netstandard2.0/MediaBrowser.Model.dll",
-        "lib/netstandard2.0/MediaBrowser.Model.pdb",
-        "mediabrowser.common.4.7.9.nupkg.sha512",
-        "mediabrowser.common.nuspec"
+        "LICENSE.txt",
+        "j2n-icon-100x100.png",
+        "j2n.2.0.0.nupkg.sha512",
+        "j2n.nuspec",
+        "lib/net40/J2N.dll",
+        "lib/net40/J2N.xml",
+        "lib/net45/J2N.dll",
+        "lib/net45/J2N.xml",
+        "lib/net5.0/J2N.dll",
+        "lib/net5.0/J2N.xml",
+        "lib/net6.0/J2N.dll",
+        "lib/net6.0/J2N.xml",
+        "lib/netcoreapp3.0/J2N.dll",
+        "lib/netcoreapp3.0/J2N.xml",
+        "lib/netstandard2.0/J2N.dll",
+        "lib/netstandard2.0/J2N.xml",
+        "lib/netstandard2.1/J2N.dll",
+        "lib/netstandard2.1/J2N.xml",
+        "readme.md"
       ]
     },
-    "MediaBrowser.Server.Core/4.7.9": {
-      "sha512": "z+X6RvXktgayOEeYToKwZ/x820xZOhRNKOI56vuTzU9VXAxTHAN+RoSlK3IkZ3RgTbTI4nWKbd2mo6ISvIVA/A==",
+    "Jellyfin.Common/10.9.7": {
+      "sha512": "3cBkNSMB+nM29TgUbb7oVxlKBBMFuwvdy2Jq6rhp0CpDfL104pLcysVW8phgy5TQWIwAXbBCNgoTPa2UsfZXjQ==",
       "type": "package",
-      "path": "mediabrowser.server.core/4.7.9",
+      "path": "jellyfin.common/10.9.7",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/netstandard2.0/MediaBrowser.Controller.dll",
-        "lib/netstandard2.0/MediaBrowser.Controller.pdb",
-        "mediabrowser.server.core.4.7.9.nupkg.sha512",
-        "mediabrowser.server.core.nuspec"
+        "jellyfin.common.10.9.7.nupkg.sha512",
+        "jellyfin.common.nuspec",
+        "lib/net8.0/MediaBrowser.Common.dll",
+        "lib/net8.0/MediaBrowser.Common.xml"
+      ]
+    },
+    "Jellyfin.Controller/10.9.7": {
+      "sha512": "AYSkd/ctGWiGKiVQXnPjbD675tjfOLZxlZHIgeJfdVckr9fvNK5nZCH8vgrLoarceL52AgIjP9sje2XizKakPA==",
+      "type": "package",
+      "path": "jellyfin.controller/10.9.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "jellyfin.controller.10.9.7.nupkg.sha512",
+        "jellyfin.controller.nuspec",
+        "lib/net8.0/MediaBrowser.Controller.dll",
+        "lib/net8.0/MediaBrowser.Controller.xml"
+      ]
+    },
+    "Jellyfin.Data/10.9.7": {
+      "sha512": "sH+YZe+a/z/5NN119JbpcdlZFTzPMC8DcUTcgEfcORZ0oB3rPMvxRp5F81Vv2NotYF+P83lzM02Jydc3BugIVQ==",
+      "type": "package",
+      "path": "jellyfin.data/10.9.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "jellyfin.data.10.9.7.nupkg.sha512",
+        "jellyfin.data.nuspec",
+        "lib/net8.0/Jellyfin.Data.dll",
+        "lib/net8.0/Jellyfin.Data.xml"
+      ]
+    },
+    "Jellyfin.Extensions/10.9.7": {
+      "sha512": "woP1qvFhBlSc31riHaB0ClucbdeNRN7phCAX6Gx8ivCBmX1uvH0Y0q8w7gKxT6aKVstGFGy2lHHeLqpfTozDUQ==",
+      "type": "package",
+      "path": "jellyfin.extensions/10.9.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "jellyfin.extensions.10.9.7.nupkg.sha512",
+        "jellyfin.extensions.nuspec",
+        "lib/net8.0/Jellyfin.Extensions.dll",
+        "lib/net8.0/Jellyfin.Extensions.xml"
+      ]
+    },
+    "Jellyfin.Model/10.9.7": {
+      "sha512": "tUlpbDb3Vx9l4OD8o/NcbQB65S+xaAhUaeLRQz35Cl6Zx0AbEiyIQX7SofjFpzpkidiw04I4sCLKnfWyENw4+Q==",
+      "type": "package",
+      "path": "jellyfin.model/10.9.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "jellyfin.model.10.9.7.nupkg.sha512",
+        "jellyfin.model.nuspec",
+        "lib/net8.0/MediaBrowser.Model.dll",
+        "lib/net8.0/MediaBrowser.Model.xml"
+      ]
+    },
+    "Jellyfin.Naming/10.9.7": {
+      "sha512": "dKGyW21goYGOzggG8Aq4RwXckdkgMEs8+hSyMnvo7zTKq/LdA/XjZIwZoGvoF/SIaSRHFczNLe/QzFBQUMpw/g==",
+      "type": "package",
+      "path": "jellyfin.naming/10.9.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "jellyfin.naming.10.9.7.nupkg.sha512",
+        "jellyfin.naming.nuspec",
+        "lib/net8.0/Emby.Naming.dll",
+        "lib/net8.0/Emby.Naming.xml"
+      ]
+    },
+    "Microsoft.AspNetCore.Http.Abstractions/2.2.0": {
+      "sha512": "Nxs7Z1q3f1STfLYKJSVXCs1iBl+Ya6E8o4Oy1bCxJ/rNI44E/0f6tbsrVqAWfB7jlnJfyaAtIalBVxPKUPQb4Q==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.http.abstractions/2.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.xml",
+        "microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+        "microsoft.aspnetcore.http.abstractions.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Http.Extensions/2.2.0": {
+      "sha512": "2DgZ9rWrJtuR7RYiew01nGRzuQBDaGHGmK56Rk54vsLLsCdzuFUPqbDTJCS1qJQWTbmbIQ9wGIOjpxA1t0l7/w==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.http.extensions/2.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Extensions.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Extensions.xml",
+        "microsoft.aspnetcore.http.extensions.2.2.0.nupkg.sha512",
+        "microsoft.aspnetcore.http.extensions.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Http.Features/2.2.0": {
+      "sha512": "ziFz5zH8f33En4dX81LW84I6XrYXKf9jg6aM39cM+LffN9KJahViKZ61dGMSO2gd3e+qe5yBRwsesvyqlZaSMg==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.http.features/2.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.xml",
+        "microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
+        "microsoft.aspnetcore.http.features.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.HttpOverrides/2.2.0": {
+      "sha512": "pOlLQyNKQduGbtbgB55RyTHFeshSfKi3DmofrVjk+UBQjyp+Tm0RNNJFQf+sv34hlFsel+VnD79QyO9Zk/c3oA==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.httpoverrides/2.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.AspNetCore.HttpOverrides.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.HttpOverrides.xml",
+        "microsoft.aspnetcore.httpoverrides.2.2.0.nupkg.sha512",
+        "microsoft.aspnetcore.httpoverrides.nuspec"
+      ]
+    },
+    "Microsoft.CodeAnalysis.NetAnalyzers/8.0.0": {
+      "sha512": "DxiTgkCl3CGq1rYmBX2wjY7XGbxiBdL4J+/AJIAFLKy5z70NxhnVRnPghnicXZ8oF6JKVXlW3xwznRbI3ioEKg==",
+      "type": "package",
+      "path": "microsoft.codeanalysis.netanalyzers/8.0.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "ThirdPartyNotices.txt",
+        "analyzers/dotnet/cs/Microsoft.CodeAnalysis.CSharp.NetAnalyzers.dll",
+        "analyzers/dotnet/cs/Microsoft.CodeAnalysis.NetAnalyzers.dll",
+        "analyzers/dotnet/cs/cs/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
+        "analyzers/dotnet/cs/de/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
+        "analyzers/dotnet/cs/es/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
+        "analyzers/dotnet/cs/fr/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
+        "analyzers/dotnet/cs/it/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
+        "analyzers/dotnet/cs/ja/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
+        "analyzers/dotnet/cs/ko/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
+        "analyzers/dotnet/cs/pl/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
+        "analyzers/dotnet/cs/pt-BR/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
+        "analyzers/dotnet/cs/ru/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
+        "analyzers/dotnet/cs/tr/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
+        "analyzers/dotnet/cs/zh-Hans/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
+        "analyzers/dotnet/cs/zh-Hant/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
+        "analyzers/dotnet/vb/Microsoft.CodeAnalysis.NetAnalyzers.dll",
+        "analyzers/dotnet/vb/Microsoft.CodeAnalysis.VisualBasic.NetAnalyzers.dll",
+        "analyzers/dotnet/vb/cs/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
+        "analyzers/dotnet/vb/de/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
+        "analyzers/dotnet/vb/es/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
+        "analyzers/dotnet/vb/fr/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
+        "analyzers/dotnet/vb/it/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
+        "analyzers/dotnet/vb/ja/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
+        "analyzers/dotnet/vb/ko/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
+        "analyzers/dotnet/vb/pl/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
+        "analyzers/dotnet/vb/pt-BR/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
+        "analyzers/dotnet/vb/ru/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
+        "analyzers/dotnet/vb/tr/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
+        "analyzers/dotnet/vb/zh-Hans/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
+        "analyzers/dotnet/vb/zh-Hant/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
+        "buildTransitive/DisableNETAnalyzersForNuGetPackage.props",
+        "buildTransitive/Microsoft.CodeAnalysis.NetAnalyzers.props",
+        "buildTransitive/Microsoft.CodeAnalysis.NetAnalyzers.targets",
+        "buildTransitive/config/analysislevel_5_all.globalconfig",
+        "buildTransitive/config/analysislevel_5_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_5_default.globalconfig",
+        "buildTransitive/config/analysislevel_5_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_5_minimum.globalconfig",
+        "buildTransitive/config/analysislevel_5_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_5_none.globalconfig",
+        "buildTransitive/config/analysislevel_5_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_5_recommended.globalconfig",
+        "buildTransitive/config/analysislevel_5_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_6_all.globalconfig",
+        "buildTransitive/config/analysislevel_6_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_6_default.globalconfig",
+        "buildTransitive/config/analysislevel_6_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_6_minimum.globalconfig",
+        "buildTransitive/config/analysislevel_6_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_6_none.globalconfig",
+        "buildTransitive/config/analysislevel_6_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_6_recommended.globalconfig",
+        "buildTransitive/config/analysislevel_6_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_7_all.globalconfig",
+        "buildTransitive/config/analysislevel_7_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_7_default.globalconfig",
+        "buildTransitive/config/analysislevel_7_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_7_minimum.globalconfig",
+        "buildTransitive/config/analysislevel_7_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_7_none.globalconfig",
+        "buildTransitive/config/analysislevel_7_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_7_recommended.globalconfig",
+        "buildTransitive/config/analysislevel_7_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_8_all.globalconfig",
+        "buildTransitive/config/analysislevel_8_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_8_default.globalconfig",
+        "buildTransitive/config/analysislevel_8_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_8_minimum.globalconfig",
+        "buildTransitive/config/analysislevel_8_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_8_none.globalconfig",
+        "buildTransitive/config/analysislevel_8_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_8_recommended.globalconfig",
+        "buildTransitive/config/analysislevel_8_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_9_all.globalconfig",
+        "buildTransitive/config/analysislevel_9_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_9_default.globalconfig",
+        "buildTransitive/config/analysislevel_9_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_9_minimum.globalconfig",
+        "buildTransitive/config/analysislevel_9_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_9_none.globalconfig",
+        "buildTransitive/config/analysislevel_9_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_9_recommended.globalconfig",
+        "buildTransitive/config/analysislevel_9_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldesign_5_all.globalconfig",
+        "buildTransitive/config/analysisleveldesign_5_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldesign_5_default.globalconfig",
+        "buildTransitive/config/analysisleveldesign_5_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldesign_5_minimum.globalconfig",
+        "buildTransitive/config/analysisleveldesign_5_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldesign_5_none.globalconfig",
+        "buildTransitive/config/analysisleveldesign_5_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldesign_5_recommended.globalconfig",
+        "buildTransitive/config/analysisleveldesign_5_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldesign_6_all.globalconfig",
+        "buildTransitive/config/analysisleveldesign_6_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldesign_6_default.globalconfig",
+        "buildTransitive/config/analysisleveldesign_6_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldesign_6_minimum.globalconfig",
+        "buildTransitive/config/analysisleveldesign_6_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldesign_6_none.globalconfig",
+        "buildTransitive/config/analysisleveldesign_6_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldesign_6_recommended.globalconfig",
+        "buildTransitive/config/analysisleveldesign_6_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldesign_7_all.globalconfig",
+        "buildTransitive/config/analysisleveldesign_7_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldesign_7_default.globalconfig",
+        "buildTransitive/config/analysisleveldesign_7_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldesign_7_minimum.globalconfig",
+        "buildTransitive/config/analysisleveldesign_7_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldesign_7_none.globalconfig",
+        "buildTransitive/config/analysisleveldesign_7_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldesign_7_recommended.globalconfig",
+        "buildTransitive/config/analysisleveldesign_7_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldesign_8_all.globalconfig",
+        "buildTransitive/config/analysisleveldesign_8_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldesign_8_default.globalconfig",
+        "buildTransitive/config/analysisleveldesign_8_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldesign_8_minimum.globalconfig",
+        "buildTransitive/config/analysisleveldesign_8_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldesign_8_none.globalconfig",
+        "buildTransitive/config/analysisleveldesign_8_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldesign_8_recommended.globalconfig",
+        "buildTransitive/config/analysisleveldesign_8_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldesign_9_all.globalconfig",
+        "buildTransitive/config/analysisleveldesign_9_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldesign_9_default.globalconfig",
+        "buildTransitive/config/analysisleveldesign_9_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldesign_9_minimum.globalconfig",
+        "buildTransitive/config/analysisleveldesign_9_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldesign_9_none.globalconfig",
+        "buildTransitive/config/analysisleveldesign_9_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldesign_9_recommended.globalconfig",
+        "buildTransitive/config/analysisleveldesign_9_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_5_all.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_5_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_5_default.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_5_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_5_minimum.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_5_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_5_none.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_5_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_5_recommended.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_5_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_6_all.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_6_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_6_default.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_6_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_6_minimum.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_6_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_6_none.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_6_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_6_recommended.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_6_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_7_all.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_7_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_7_default.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_7_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_7_minimum.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_7_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_7_none.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_7_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_7_recommended.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_7_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_8_all.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_8_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_8_default.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_8_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_8_minimum.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_8_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_8_none.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_8_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_8_recommended.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_8_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_9_all.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_9_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_9_default.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_9_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_9_minimum.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_9_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_9_none.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_9_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_9_recommended.globalconfig",
+        "buildTransitive/config/analysisleveldocumentation_9_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_5_all.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_5_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_5_default.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_5_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_5_minimum.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_5_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_5_none.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_5_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_5_recommended.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_5_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_6_all.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_6_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_6_default.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_6_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_6_minimum.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_6_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_6_none.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_6_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_6_recommended.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_6_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_7_all.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_7_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_7_default.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_7_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_7_minimum.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_7_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_7_none.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_7_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_7_recommended.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_7_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_8_all.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_8_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_8_default.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_8_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_8_minimum.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_8_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_8_none.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_8_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_8_recommended.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_8_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_9_all.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_9_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_9_default.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_9_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_9_minimum.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_9_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_9_none.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_9_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_9_recommended.globalconfig",
+        "buildTransitive/config/analysislevelglobalization_9_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_5_all.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_5_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_5_default.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_5_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_5_minimum.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_5_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_5_none.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_5_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_5_recommended.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_5_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_6_all.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_6_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_6_default.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_6_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_6_minimum.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_6_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_6_none.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_6_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_6_recommended.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_6_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_7_all.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_7_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_7_default.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_7_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_7_minimum.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_7_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_7_none.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_7_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_7_recommended.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_7_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_8_all.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_8_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_8_default.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_8_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_8_minimum.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_8_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_8_none.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_8_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_8_recommended.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_8_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_9_all.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_9_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_9_default.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_9_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_9_minimum.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_9_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_9_none.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_9_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_9_recommended.globalconfig",
+        "buildTransitive/config/analysislevelinteroperability_9_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_5_all.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_5_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_5_default.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_5_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_5_minimum.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_5_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_5_none.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_5_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_5_recommended.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_5_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_6_all.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_6_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_6_default.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_6_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_6_minimum.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_6_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_6_none.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_6_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_6_recommended.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_6_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_7_all.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_7_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_7_default.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_7_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_7_minimum.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_7_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_7_none.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_7_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_7_recommended.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_7_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_8_all.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_8_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_8_default.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_8_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_8_minimum.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_8_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_8_none.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_8_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_8_recommended.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_8_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_9_all.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_9_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_9_default.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_9_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_9_minimum.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_9_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_9_none.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_9_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_9_recommended.globalconfig",
+        "buildTransitive/config/analysislevelmaintainability_9_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelnaming_5_all.globalconfig",
+        "buildTransitive/config/analysislevelnaming_5_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelnaming_5_default.globalconfig",
+        "buildTransitive/config/analysislevelnaming_5_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelnaming_5_minimum.globalconfig",
+        "buildTransitive/config/analysislevelnaming_5_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelnaming_5_none.globalconfig",
+        "buildTransitive/config/analysislevelnaming_5_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelnaming_5_recommended.globalconfig",
+        "buildTransitive/config/analysislevelnaming_5_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelnaming_6_all.globalconfig",
+        "buildTransitive/config/analysislevelnaming_6_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelnaming_6_default.globalconfig",
+        "buildTransitive/config/analysislevelnaming_6_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelnaming_6_minimum.globalconfig",
+        "buildTransitive/config/analysislevelnaming_6_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelnaming_6_none.globalconfig",
+        "buildTransitive/config/analysislevelnaming_6_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelnaming_6_recommended.globalconfig",
+        "buildTransitive/config/analysislevelnaming_6_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelnaming_7_all.globalconfig",
+        "buildTransitive/config/analysislevelnaming_7_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelnaming_7_default.globalconfig",
+        "buildTransitive/config/analysislevelnaming_7_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelnaming_7_minimum.globalconfig",
+        "buildTransitive/config/analysislevelnaming_7_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelnaming_7_none.globalconfig",
+        "buildTransitive/config/analysislevelnaming_7_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelnaming_7_recommended.globalconfig",
+        "buildTransitive/config/analysislevelnaming_7_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelnaming_8_all.globalconfig",
+        "buildTransitive/config/analysislevelnaming_8_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelnaming_8_default.globalconfig",
+        "buildTransitive/config/analysislevelnaming_8_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelnaming_8_minimum.globalconfig",
+        "buildTransitive/config/analysislevelnaming_8_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelnaming_8_none.globalconfig",
+        "buildTransitive/config/analysislevelnaming_8_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelnaming_8_recommended.globalconfig",
+        "buildTransitive/config/analysislevelnaming_8_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelnaming_9_all.globalconfig",
+        "buildTransitive/config/analysislevelnaming_9_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelnaming_9_default.globalconfig",
+        "buildTransitive/config/analysislevelnaming_9_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelnaming_9_minimum.globalconfig",
+        "buildTransitive/config/analysislevelnaming_9_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelnaming_9_none.globalconfig",
+        "buildTransitive/config/analysislevelnaming_9_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelnaming_9_recommended.globalconfig",
+        "buildTransitive/config/analysislevelnaming_9_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelperformance_5_all.globalconfig",
+        "buildTransitive/config/analysislevelperformance_5_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelperformance_5_default.globalconfig",
+        "buildTransitive/config/analysislevelperformance_5_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelperformance_5_minimum.globalconfig",
+        "buildTransitive/config/analysislevelperformance_5_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelperformance_5_none.globalconfig",
+        "buildTransitive/config/analysislevelperformance_5_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelperformance_5_recommended.globalconfig",
+        "buildTransitive/config/analysislevelperformance_5_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelperformance_6_all.globalconfig",
+        "buildTransitive/config/analysislevelperformance_6_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelperformance_6_default.globalconfig",
+        "buildTransitive/config/analysislevelperformance_6_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelperformance_6_minimum.globalconfig",
+        "buildTransitive/config/analysislevelperformance_6_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelperformance_6_none.globalconfig",
+        "buildTransitive/config/analysislevelperformance_6_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelperformance_6_recommended.globalconfig",
+        "buildTransitive/config/analysislevelperformance_6_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelperformance_7_all.globalconfig",
+        "buildTransitive/config/analysislevelperformance_7_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelperformance_7_default.globalconfig",
+        "buildTransitive/config/analysislevelperformance_7_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelperformance_7_minimum.globalconfig",
+        "buildTransitive/config/analysislevelperformance_7_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelperformance_7_none.globalconfig",
+        "buildTransitive/config/analysislevelperformance_7_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelperformance_7_recommended.globalconfig",
+        "buildTransitive/config/analysislevelperformance_7_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelperformance_8_all.globalconfig",
+        "buildTransitive/config/analysislevelperformance_8_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelperformance_8_default.globalconfig",
+        "buildTransitive/config/analysislevelperformance_8_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelperformance_8_minimum.globalconfig",
+        "buildTransitive/config/analysislevelperformance_8_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelperformance_8_none.globalconfig",
+        "buildTransitive/config/analysislevelperformance_8_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelperformance_8_recommended.globalconfig",
+        "buildTransitive/config/analysislevelperformance_8_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelperformance_9_all.globalconfig",
+        "buildTransitive/config/analysislevelperformance_9_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelperformance_9_default.globalconfig",
+        "buildTransitive/config/analysislevelperformance_9_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelperformance_9_minimum.globalconfig",
+        "buildTransitive/config/analysislevelperformance_9_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelperformance_9_none.globalconfig",
+        "buildTransitive/config/analysislevelperformance_9_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelperformance_9_recommended.globalconfig",
+        "buildTransitive/config/analysislevelperformance_9_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelreliability_5_all.globalconfig",
+        "buildTransitive/config/analysislevelreliability_5_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelreliability_5_default.globalconfig",
+        "buildTransitive/config/analysislevelreliability_5_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelreliability_5_minimum.globalconfig",
+        "buildTransitive/config/analysislevelreliability_5_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelreliability_5_none.globalconfig",
+        "buildTransitive/config/analysislevelreliability_5_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelreliability_5_recommended.globalconfig",
+        "buildTransitive/config/analysislevelreliability_5_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelreliability_6_all.globalconfig",
+        "buildTransitive/config/analysislevelreliability_6_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelreliability_6_default.globalconfig",
+        "buildTransitive/config/analysislevelreliability_6_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelreliability_6_minimum.globalconfig",
+        "buildTransitive/config/analysislevelreliability_6_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelreliability_6_none.globalconfig",
+        "buildTransitive/config/analysislevelreliability_6_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelreliability_6_recommended.globalconfig",
+        "buildTransitive/config/analysislevelreliability_6_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelreliability_7_all.globalconfig",
+        "buildTransitive/config/analysislevelreliability_7_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelreliability_7_default.globalconfig",
+        "buildTransitive/config/analysislevelreliability_7_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelreliability_7_minimum.globalconfig",
+        "buildTransitive/config/analysislevelreliability_7_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelreliability_7_none.globalconfig",
+        "buildTransitive/config/analysislevelreliability_7_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelreliability_7_recommended.globalconfig",
+        "buildTransitive/config/analysislevelreliability_7_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelreliability_8_all.globalconfig",
+        "buildTransitive/config/analysislevelreliability_8_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelreliability_8_default.globalconfig",
+        "buildTransitive/config/analysislevelreliability_8_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelreliability_8_minimum.globalconfig",
+        "buildTransitive/config/analysislevelreliability_8_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelreliability_8_none.globalconfig",
+        "buildTransitive/config/analysislevelreliability_8_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelreliability_8_recommended.globalconfig",
+        "buildTransitive/config/analysislevelreliability_8_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelreliability_9_all.globalconfig",
+        "buildTransitive/config/analysislevelreliability_9_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelreliability_9_default.globalconfig",
+        "buildTransitive/config/analysislevelreliability_9_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelreliability_9_minimum.globalconfig",
+        "buildTransitive/config/analysislevelreliability_9_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelreliability_9_none.globalconfig",
+        "buildTransitive/config/analysislevelreliability_9_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelreliability_9_recommended.globalconfig",
+        "buildTransitive/config/analysislevelreliability_9_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_5_all.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_5_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_5_default.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_5_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_5_minimum.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_5_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_5_none.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_5_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_5_recommended.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_5_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_6_all.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_6_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_6_default.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_6_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_6_minimum.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_6_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_6_none.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_6_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_6_recommended.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_6_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_7_all.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_7_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_7_default.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_7_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_7_minimum.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_7_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_7_none.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_7_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_7_recommended.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_7_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_8_all.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_8_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_8_default.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_8_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_8_minimum.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_8_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_8_none.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_8_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_8_recommended.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_8_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_9_all.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_9_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_9_default.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_9_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_9_minimum.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_9_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_9_none.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_9_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_9_recommended.globalconfig",
+        "buildTransitive/config/analysislevelsecurity_9_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelusage_5_all.globalconfig",
+        "buildTransitive/config/analysislevelusage_5_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelusage_5_default.globalconfig",
+        "buildTransitive/config/analysislevelusage_5_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelusage_5_minimum.globalconfig",
+        "buildTransitive/config/analysislevelusage_5_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelusage_5_none.globalconfig",
+        "buildTransitive/config/analysislevelusage_5_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelusage_5_recommended.globalconfig",
+        "buildTransitive/config/analysislevelusage_5_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelusage_6_all.globalconfig",
+        "buildTransitive/config/analysislevelusage_6_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelusage_6_default.globalconfig",
+        "buildTransitive/config/analysislevelusage_6_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelusage_6_minimum.globalconfig",
+        "buildTransitive/config/analysislevelusage_6_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelusage_6_none.globalconfig",
+        "buildTransitive/config/analysislevelusage_6_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelusage_6_recommended.globalconfig",
+        "buildTransitive/config/analysislevelusage_6_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelusage_7_all.globalconfig",
+        "buildTransitive/config/analysislevelusage_7_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelusage_7_default.globalconfig",
+        "buildTransitive/config/analysislevelusage_7_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelusage_7_minimum.globalconfig",
+        "buildTransitive/config/analysislevelusage_7_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelusage_7_none.globalconfig",
+        "buildTransitive/config/analysislevelusage_7_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelusage_7_recommended.globalconfig",
+        "buildTransitive/config/analysislevelusage_7_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelusage_8_all.globalconfig",
+        "buildTransitive/config/analysislevelusage_8_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelusage_8_default.globalconfig",
+        "buildTransitive/config/analysislevelusage_8_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelusage_8_minimum.globalconfig",
+        "buildTransitive/config/analysislevelusage_8_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelusage_8_none.globalconfig",
+        "buildTransitive/config/analysislevelusage_8_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelusage_8_recommended.globalconfig",
+        "buildTransitive/config/analysislevelusage_8_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelusage_9_all.globalconfig",
+        "buildTransitive/config/analysislevelusage_9_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelusage_9_default.globalconfig",
+        "buildTransitive/config/analysislevelusage_9_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelusage_9_minimum.globalconfig",
+        "buildTransitive/config/analysislevelusage_9_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelusage_9_none.globalconfig",
+        "buildTransitive/config/analysislevelusage_9_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelusage_9_recommended.globalconfig",
+        "buildTransitive/config/analysislevelusage_9_recommended_warnaserror.globalconfig",
+        "documentation/Analyzer Configuration.md",
+        "documentation/Microsoft.CodeAnalysis.NetAnalyzers.md",
+        "documentation/Microsoft.CodeAnalysis.NetAnalyzers.sarif",
+        "documentation/readme.md",
+        "editorconfig/AllRulesDefault/.editorconfig",
+        "editorconfig/AllRulesDisabled/.editorconfig",
+        "editorconfig/AllRulesEnabled/.editorconfig",
+        "editorconfig/DataflowRulesDefault/.editorconfig",
+        "editorconfig/DataflowRulesEnabled/.editorconfig",
+        "editorconfig/DesignRulesDefault/.editorconfig",
+        "editorconfig/DesignRulesEnabled/.editorconfig",
+        "editorconfig/DocumentationRulesDefault/.editorconfig",
+        "editorconfig/DocumentationRulesEnabled/.editorconfig",
+        "editorconfig/GlobalizationRulesDefault/.editorconfig",
+        "editorconfig/GlobalizationRulesEnabled/.editorconfig",
+        "editorconfig/InteroperabilityRulesDefault/.editorconfig",
+        "editorconfig/InteroperabilityRulesEnabled/.editorconfig",
+        "editorconfig/MaintainabilityRulesDefault/.editorconfig",
+        "editorconfig/MaintainabilityRulesEnabled/.editorconfig",
+        "editorconfig/NamingRulesDefault/.editorconfig",
+        "editorconfig/NamingRulesEnabled/.editorconfig",
+        "editorconfig/PerformanceRulesDefault/.editorconfig",
+        "editorconfig/PerformanceRulesEnabled/.editorconfig",
+        "editorconfig/PortedFromFxCopRulesDefault/.editorconfig",
+        "editorconfig/PortedFromFxCopRulesEnabled/.editorconfig",
+        "editorconfig/ReliabilityRulesDefault/.editorconfig",
+        "editorconfig/ReliabilityRulesEnabled/.editorconfig",
+        "editorconfig/SecurityRulesDefault/.editorconfig",
+        "editorconfig/SecurityRulesEnabled/.editorconfig",
+        "editorconfig/UsageRulesDefault/.editorconfig",
+        "editorconfig/UsageRulesEnabled/.editorconfig",
+        "microsoft.codeanalysis.netanalyzers.8.0.0.nupkg.sha512",
+        "microsoft.codeanalysis.netanalyzers.nuspec",
+        "rulesets/AllRulesDefault.ruleset",
+        "rulesets/AllRulesDisabled.ruleset",
+        "rulesets/AllRulesEnabled.ruleset",
+        "rulesets/DataflowRulesDefault.ruleset",
+        "rulesets/DataflowRulesEnabled.ruleset",
+        "rulesets/DesignRulesDefault.ruleset",
+        "rulesets/DesignRulesEnabled.ruleset",
+        "rulesets/DocumentationRulesDefault.ruleset",
+        "rulesets/DocumentationRulesEnabled.ruleset",
+        "rulesets/GlobalizationRulesDefault.ruleset",
+        "rulesets/GlobalizationRulesEnabled.ruleset",
+        "rulesets/InteroperabilityRulesDefault.ruleset",
+        "rulesets/InteroperabilityRulesEnabled.ruleset",
+        "rulesets/MaintainabilityRulesDefault.ruleset",
+        "rulesets/MaintainabilityRulesEnabled.ruleset",
+        "rulesets/NamingRulesDefault.ruleset",
+        "rulesets/NamingRulesEnabled.ruleset",
+        "rulesets/PerformanceRulesDefault.ruleset",
+        "rulesets/PerformanceRulesEnabled.ruleset",
+        "rulesets/PortedFromFxCopRulesDefault.ruleset",
+        "rulesets/PortedFromFxCopRulesEnabled.ruleset",
+        "rulesets/ReliabilityRulesDefault.ruleset",
+        "rulesets/ReliabilityRulesEnabled.ruleset",
+        "rulesets/SecurityRulesDefault.ruleset",
+        "rulesets/SecurityRulesEnabled.ruleset",
+        "rulesets/UsageRulesDefault.ruleset",
+        "rulesets/UsageRulesEnabled.ruleset",
+        "tools/install.ps1",
+        "tools/uninstall.ps1"
+      ]
+    },
+    "Microsoft.Extensions.Caching.Abstractions/2.0.0": {
+      "sha512": "kGMEV53Od1ES0BDh7OOKbTW9Zu5dbbQ72yI936dvvbHlde3puuq/WRKAccFgcB2PuRjox1HFhA9+t53RYqfuEA==",
+      "type": "package",
+      "path": "microsoft.extensions.caching.abstractions/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Extensions.Caching.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Caching.Abstractions.xml",
+        "microsoft.extensions.caching.abstractions.2.0.0.nupkg.sha512",
+        "microsoft.extensions.caching.abstractions.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.Caching.Memory/2.0.0": {
+      "sha512": "NqvVdYLbX7N2J2Wz9y3zjhE66JRdROiZZsGhA2u4a9IcIq/jzINC/cLM96BHA+TSOZFPxVdWneqB6/yt9u846A==",
+      "type": "package",
+      "path": "microsoft.extensions.caching.memory/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.xml",
+        "microsoft.extensions.caching.memory.2.0.0.nupkg.sha512",
+        "microsoft.extensions.caching.memory.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.Configuration/8.0.0": {
+      "sha512": "0J/9YNXTMWSZP2p2+nvl8p71zpSwokZXZuJW+VjdErkegAnFdO1XlqtA62SJtgVYHdKu3uPxJHcMR/r35HwFBA==",
+      "type": "package",
+      "path": "microsoft.extensions.configuration/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Extensions.Configuration.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Configuration.targets",
+        "lib/net462/Microsoft.Extensions.Configuration.dll",
+        "lib/net462/Microsoft.Extensions.Configuration.xml",
+        "lib/net6.0/Microsoft.Extensions.Configuration.dll",
+        "lib/net6.0/Microsoft.Extensions.Configuration.xml",
+        "lib/net7.0/Microsoft.Extensions.Configuration.dll",
+        "lib/net7.0/Microsoft.Extensions.Configuration.xml",
+        "lib/net8.0/Microsoft.Extensions.Configuration.dll",
+        "lib/net8.0/Microsoft.Extensions.Configuration.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.xml",
+        "microsoft.extensions.configuration.8.0.0.nupkg.sha512",
+        "microsoft.extensions.configuration.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Configuration.Abstractions/8.0.0": {
+      "sha512": "3lE/iLSutpgX1CC0NOW70FJoGARRHbyKmG7dc0klnUZ9Dd9hS6N/POPWhKhMLCEuNN5nXEY5agmlFtH562vqhQ==",
+      "type": "package",
+      "path": "microsoft.extensions.configuration.abstractions/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Extensions.Configuration.Abstractions.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Configuration.Abstractions.targets",
+        "lib/net462/Microsoft.Extensions.Configuration.Abstractions.dll",
+        "lib/net462/Microsoft.Extensions.Configuration.Abstractions.xml",
+        "lib/net6.0/Microsoft.Extensions.Configuration.Abstractions.dll",
+        "lib/net6.0/Microsoft.Extensions.Configuration.Abstractions.xml",
+        "lib/net7.0/Microsoft.Extensions.Configuration.Abstractions.dll",
+        "lib/net7.0/Microsoft.Extensions.Configuration.Abstractions.xml",
+        "lib/net8.0/Microsoft.Extensions.Configuration.Abstractions.dll",
+        "lib/net8.0/Microsoft.Extensions.Configuration.Abstractions.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.xml",
+        "microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
+        "microsoft.extensions.configuration.abstractions.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Configuration.Binder/8.0.1": {
+      "sha512": "2UKFJnLiBt7Od6nCnTqP9rTIUNhzmn9Hv1l2FchyKbz8xieB9ULwZTbQZMw+M24Qw3F5dzzH1U9PPleN0LNLOQ==",
+      "type": "package",
+      "path": "microsoft.extensions.configuration.binder/8.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "analyzers/dotnet/cs/Microsoft.Extensions.Configuration.Binder.SourceGeneration.dll",
+        "analyzers/dotnet/cs/cs/Microsoft.Extensions.Configuration.Binder.SourceGeneration.resources.dll",
+        "analyzers/dotnet/cs/de/Microsoft.Extensions.Configuration.Binder.SourceGeneration.resources.dll",
+        "analyzers/dotnet/cs/es/Microsoft.Extensions.Configuration.Binder.SourceGeneration.resources.dll",
+        "analyzers/dotnet/cs/fr/Microsoft.Extensions.Configuration.Binder.SourceGeneration.resources.dll",
+        "analyzers/dotnet/cs/it/Microsoft.Extensions.Configuration.Binder.SourceGeneration.resources.dll",
+        "analyzers/dotnet/cs/ja/Microsoft.Extensions.Configuration.Binder.SourceGeneration.resources.dll",
+        "analyzers/dotnet/cs/ko/Microsoft.Extensions.Configuration.Binder.SourceGeneration.resources.dll",
+        "analyzers/dotnet/cs/pl/Microsoft.Extensions.Configuration.Binder.SourceGeneration.resources.dll",
+        "analyzers/dotnet/cs/pt-BR/Microsoft.Extensions.Configuration.Binder.SourceGeneration.resources.dll",
+        "analyzers/dotnet/cs/ru/Microsoft.Extensions.Configuration.Binder.SourceGeneration.resources.dll",
+        "analyzers/dotnet/cs/tr/Microsoft.Extensions.Configuration.Binder.SourceGeneration.resources.dll",
+        "analyzers/dotnet/cs/zh-Hans/Microsoft.Extensions.Configuration.Binder.SourceGeneration.resources.dll",
+        "analyzers/dotnet/cs/zh-Hant/Microsoft.Extensions.Configuration.Binder.SourceGeneration.resources.dll",
+        "buildTransitive/netstandard2.0/Microsoft.Extensions.Configuration.Binder.targets",
+        "lib/net462/Microsoft.Extensions.Configuration.Binder.dll",
+        "lib/net462/Microsoft.Extensions.Configuration.Binder.xml",
+        "lib/net6.0/Microsoft.Extensions.Configuration.Binder.dll",
+        "lib/net6.0/Microsoft.Extensions.Configuration.Binder.xml",
+        "lib/net7.0/Microsoft.Extensions.Configuration.Binder.dll",
+        "lib/net7.0/Microsoft.Extensions.Configuration.Binder.xml",
+        "lib/net8.0/Microsoft.Extensions.Configuration.Binder.dll",
+        "lib/net8.0/Microsoft.Extensions.Configuration.Binder.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.Binder.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.Binder.xml",
+        "microsoft.extensions.configuration.binder.8.0.1.nupkg.sha512",
+        "microsoft.extensions.configuration.binder.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.DependencyInjection/8.0.0": {
+      "sha512": "V8S3bsm50ig6JSyrbcJJ8bW2b9QLGouz+G1miK3UTaOWmMtFwNNNzUf4AleyDWUmTrWMLNnFSLEQtxmxgNQnNQ==",
+      "type": "package",
+      "path": "microsoft.extensions.dependencyinjection/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Extensions.DependencyInjection.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.DependencyInjection.targets",
+        "lib/net462/Microsoft.Extensions.DependencyInjection.dll",
+        "lib/net462/Microsoft.Extensions.DependencyInjection.xml",
+        "lib/net6.0/Microsoft.Extensions.DependencyInjection.dll",
+        "lib/net6.0/Microsoft.Extensions.DependencyInjection.xml",
+        "lib/net7.0/Microsoft.Extensions.DependencyInjection.dll",
+        "lib/net7.0/Microsoft.Extensions.DependencyInjection.xml",
+        "lib/net8.0/Microsoft.Extensions.DependencyInjection.dll",
+        "lib/net8.0/Microsoft.Extensions.DependencyInjection.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.xml",
+        "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.dll",
+        "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.xml",
+        "microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.1": {
+      "sha512": "fGLiCRLMYd00JYpClraLjJTNKLmMJPnqxMaiRzEBIIvevlzxz33mXy39Lkd48hu1G+N21S7QpaO5ZzKsI6FRuA==",
+      "type": "package",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/8.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Extensions.DependencyInjection.Abstractions.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.DependencyInjection.Abstractions.targets",
+        "lib/net462/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/net462/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "lib/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "lib/net7.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/net7.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "microsoft.extensions.dependencyinjection.abstractions.8.0.1.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.abstractions.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Diagnostics/8.0.0": {
+      "sha512": "3PZp/YSkIXrF7QK7PfC1bkyRYwqOHpWFad8Qx+4wkuumAeXo1NHaxpS9LboNA9OvNSAu+QOVlXbMyoY+pHSqcw==",
+      "type": "package",
+      "path": "microsoft.extensions.diagnostics/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Extensions.Diagnostics.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Diagnostics.targets",
+        "lib/net462/Microsoft.Extensions.Diagnostics.dll",
+        "lib/net462/Microsoft.Extensions.Diagnostics.xml",
+        "lib/net6.0/Microsoft.Extensions.Diagnostics.dll",
+        "lib/net6.0/Microsoft.Extensions.Diagnostics.xml",
+        "lib/net7.0/Microsoft.Extensions.Diagnostics.dll",
+        "lib/net7.0/Microsoft.Extensions.Diagnostics.xml",
+        "lib/net8.0/Microsoft.Extensions.Diagnostics.dll",
+        "lib/net8.0/Microsoft.Extensions.Diagnostics.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.xml",
+        "microsoft.extensions.diagnostics.8.0.0.nupkg.sha512",
+        "microsoft.extensions.diagnostics.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Diagnostics.Abstractions/8.0.0": {
+      "sha512": "JHYCQG7HmugNYUhOl368g+NMxYE/N/AiclCYRNlgCY9eVyiBkOHMwK4x60RYMxv9EL3+rmj1mqHvdCiPpC+D4Q==",
+      "type": "package",
+      "path": "microsoft.extensions.diagnostics.abstractions/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Extensions.Diagnostics.Abstractions.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Diagnostics.Abstractions.targets",
+        "lib/net462/Microsoft.Extensions.Diagnostics.Abstractions.dll",
+        "lib/net462/Microsoft.Extensions.Diagnostics.Abstractions.xml",
+        "lib/net6.0/Microsoft.Extensions.Diagnostics.Abstractions.dll",
+        "lib/net6.0/Microsoft.Extensions.Diagnostics.Abstractions.xml",
+        "lib/net7.0/Microsoft.Extensions.Diagnostics.Abstractions.dll",
+        "lib/net7.0/Microsoft.Extensions.Diagnostics.Abstractions.xml",
+        "lib/net8.0/Microsoft.Extensions.Diagnostics.Abstractions.dll",
+        "lib/net8.0/Microsoft.Extensions.Diagnostics.Abstractions.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.Abstractions.xml",
+        "microsoft.extensions.diagnostics.abstractions.8.0.0.nupkg.sha512",
+        "microsoft.extensions.diagnostics.abstractions.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.FileProviders.Abstractions/2.2.0": {
+      "sha512": "EcnaSsPTqx2MGnHrmWOD0ugbuuqVT8iICqSqPzi45V5/MA1LjUNb0kwgcxBGqizV1R+WeBK7/Gw25Jzkyk9bIw==",
+      "type": "package",
+      "path": "microsoft.extensions.fileproviders.abstractions/2.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.xml",
+        "microsoft.extensions.fileproviders.abstractions.2.2.0.nupkg.sha512",
+        "microsoft.extensions.fileproviders.abstractions.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.Http/8.0.0": {
+      "sha512": "cWz4caHwvx0emoYe7NkHPxII/KkTI8R/LC9qdqJqnKv2poTJ4e2qqPGQqvRoQ5kaSA4FU5IV3qFAuLuOhoqULQ==",
+      "type": "package",
+      "path": "microsoft.extensions.http/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Extensions.Http.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Http.targets",
+        "lib/net462/Microsoft.Extensions.Http.dll",
+        "lib/net462/Microsoft.Extensions.Http.xml",
+        "lib/net6.0/Microsoft.Extensions.Http.dll",
+        "lib/net6.0/Microsoft.Extensions.Http.xml",
+        "lib/net7.0/Microsoft.Extensions.Http.dll",
+        "lib/net7.0/Microsoft.Extensions.Http.xml",
+        "lib/net8.0/Microsoft.Extensions.Http.dll",
+        "lib/net8.0/Microsoft.Extensions.Http.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Http.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Http.xml",
+        "microsoft.extensions.http.8.0.0.nupkg.sha512",
+        "microsoft.extensions.http.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Logging/8.0.0": {
+      "sha512": "tvRkov9tAJ3xP51LCv3FJ2zINmv1P8Hi8lhhtcKGqM+ImiTCC84uOPEI4z8Cdq2C3o9e+Aa0Gw0rmrsJD77W+w==",
+      "type": "package",
+      "path": "microsoft.extensions.logging/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Extensions.Logging.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Logging.targets",
+        "lib/net462/Microsoft.Extensions.Logging.dll",
+        "lib/net462/Microsoft.Extensions.Logging.xml",
+        "lib/net6.0/Microsoft.Extensions.Logging.dll",
+        "lib/net6.0/Microsoft.Extensions.Logging.xml",
+        "lib/net7.0/Microsoft.Extensions.Logging.dll",
+        "lib/net7.0/Microsoft.Extensions.Logging.xml",
+        "lib/net8.0/Microsoft.Extensions.Logging.dll",
+        "lib/net8.0/Microsoft.Extensions.Logging.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.xml",
+        "lib/netstandard2.1/Microsoft.Extensions.Logging.dll",
+        "lib/netstandard2.1/Microsoft.Extensions.Logging.xml",
+        "microsoft.extensions.logging.8.0.0.nupkg.sha512",
+        "microsoft.extensions.logging.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Logging.Abstractions/8.0.1": {
+      "sha512": "RIFgaqoaINxkM2KTOw72dmilDmTrYA0ns2KW4lDz4gZ2+o6IQ894CzmdL3StM2oh7QQq44nCWiqKqc4qUI9Jmg==",
+      "type": "package",
+      "path": "microsoft.extensions.logging.abstractions/8.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "analyzers/dotnet/roslyn3.11/cs/Microsoft.Extensions.Logging.Generators.dll",
+        "analyzers/dotnet/roslyn3.11/cs/cs/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/de/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/es/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/fr/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/it/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/ja/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/ko/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/pl/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/pt-BR/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/ru/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/tr/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/zh-Hans/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/zh-Hant/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/Microsoft.Extensions.Logging.Generators.dll",
+        "analyzers/dotnet/roslyn4.0/cs/cs/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/de/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/es/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/fr/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/it/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/ja/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/ko/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/pl/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/pt-BR/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/ru/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/tr/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/zh-Hans/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/zh-Hant/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/Microsoft.Extensions.Logging.Generators.dll",
+        "analyzers/dotnet/roslyn4.4/cs/cs/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/de/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/es/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/fr/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/it/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/ja/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/ko/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/pl/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/pt-BR/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/ru/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/tr/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/zh-Hans/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/zh-Hant/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "buildTransitive/net461/Microsoft.Extensions.Logging.Abstractions.targets",
+        "buildTransitive/net462/Microsoft.Extensions.Logging.Abstractions.targets",
+        "buildTransitive/net6.0/Microsoft.Extensions.Logging.Abstractions.targets",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Logging.Abstractions.targets",
+        "buildTransitive/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.targets",
+        "lib/net462/Microsoft.Extensions.Logging.Abstractions.dll",
+        "lib/net462/Microsoft.Extensions.Logging.Abstractions.xml",
+        "lib/net6.0/Microsoft.Extensions.Logging.Abstractions.dll",
+        "lib/net6.0/Microsoft.Extensions.Logging.Abstractions.xml",
+        "lib/net7.0/Microsoft.Extensions.Logging.Abstractions.dll",
+        "lib/net7.0/Microsoft.Extensions.Logging.Abstractions.xml",
+        "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll",
+        "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.xml",
+        "microsoft.extensions.logging.abstractions.8.0.1.nupkg.sha512",
+        "microsoft.extensions.logging.abstractions.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Options/8.0.0": {
+      "sha512": "JOVOfqpnqlVLUzINQ2fox8evY2SKLYJ3BV8QDe/Jyp21u1T7r45x/R/5QdteURMR5r01GxeJSBBUOCOyaNXA3g==",
+      "type": "package",
+      "path": "microsoft.extensions.options/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "analyzers/dotnet/roslyn4.4/cs/Microsoft.Extensions.Options.SourceGeneration.dll",
+        "analyzers/dotnet/roslyn4.4/cs/cs/Microsoft.Extensions.Options.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/de/Microsoft.Extensions.Options.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/es/Microsoft.Extensions.Options.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/fr/Microsoft.Extensions.Options.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/it/Microsoft.Extensions.Options.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/ja/Microsoft.Extensions.Options.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/ko/Microsoft.Extensions.Options.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/pl/Microsoft.Extensions.Options.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/pt-BR/Microsoft.Extensions.Options.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/ru/Microsoft.Extensions.Options.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/tr/Microsoft.Extensions.Options.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/zh-Hans/Microsoft.Extensions.Options.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/zh-Hant/Microsoft.Extensions.Options.SourceGeneration.resources.dll",
+        "buildTransitive/net461/Microsoft.Extensions.Options.targets",
+        "buildTransitive/net462/Microsoft.Extensions.Options.targets",
+        "buildTransitive/net6.0/Microsoft.Extensions.Options.targets",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Options.targets",
+        "buildTransitive/netstandard2.0/Microsoft.Extensions.Options.targets",
+        "lib/net462/Microsoft.Extensions.Options.dll",
+        "lib/net462/Microsoft.Extensions.Options.xml",
+        "lib/net6.0/Microsoft.Extensions.Options.dll",
+        "lib/net6.0/Microsoft.Extensions.Options.xml",
+        "lib/net7.0/Microsoft.Extensions.Options.dll",
+        "lib/net7.0/Microsoft.Extensions.Options.xml",
+        "lib/net8.0/Microsoft.Extensions.Options.dll",
+        "lib/net8.0/Microsoft.Extensions.Options.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Options.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Options.xml",
+        "lib/netstandard2.1/Microsoft.Extensions.Options.dll",
+        "lib/netstandard2.1/Microsoft.Extensions.Options.xml",
+        "microsoft.extensions.options.8.0.0.nupkg.sha512",
+        "microsoft.extensions.options.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Options.ConfigurationExtensions/8.0.0": {
+      "sha512": "0f4DMRqEd50zQh+UyJc+/HiBsZ3vhAQALgdkcQEalSH1L2isdC7Yj54M3cyo5e+BeO5fcBQ7Dxly8XiBBcvRgw==",
+      "type": "package",
+      "path": "microsoft.extensions.options.configurationextensions/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Extensions.Options.ConfigurationExtensions.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Options.ConfigurationExtensions.targets",
+        "lib/net462/Microsoft.Extensions.Options.ConfigurationExtensions.dll",
+        "lib/net462/Microsoft.Extensions.Options.ConfigurationExtensions.xml",
+        "lib/net6.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll",
+        "lib/net6.0/Microsoft.Extensions.Options.ConfigurationExtensions.xml",
+        "lib/net7.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll",
+        "lib/net7.0/Microsoft.Extensions.Options.ConfigurationExtensions.xml",
+        "lib/net8.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll",
+        "lib/net8.0/Microsoft.Extensions.Options.ConfigurationExtensions.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Options.ConfigurationExtensions.xml",
+        "microsoft.extensions.options.configurationextensions.8.0.0.nupkg.sha512",
+        "microsoft.extensions.options.configurationextensions.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Primitives/8.0.0": {
+      "sha512": "bXJEZrW9ny8vjMF1JV253WeLhpEVzFo1lyaZu1vQ4ZxWUlVvknZ/+ftFgVheLubb4eZPSwwxBeqS1JkCOjxd8g==",
+      "type": "package",
+      "path": "microsoft.extensions.primitives/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Extensions.Primitives.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Primitives.targets",
+        "lib/net462/Microsoft.Extensions.Primitives.dll",
+        "lib/net462/Microsoft.Extensions.Primitives.xml",
+        "lib/net6.0/Microsoft.Extensions.Primitives.dll",
+        "lib/net6.0/Microsoft.Extensions.Primitives.xml",
+        "lib/net7.0/Microsoft.Extensions.Primitives.dll",
+        "lib/net7.0/Microsoft.Extensions.Primitives.xml",
+        "lib/net8.0/Microsoft.Extensions.Primitives.dll",
+        "lib/net8.0/Microsoft.Extensions.Primitives.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Primitives.xml",
+        "microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+        "microsoft.extensions.primitives.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Net.Http.Headers/2.2.0": {
+      "sha512": "iZNkjYqlo8sIOI0bQfpsSoMTmB/kyvmV2h225ihyZT33aTp48ZpF6qYnXxzSXmHt8DpBAwBTX+1s1UFLbYfZKg==",
+      "type": "package",
+      "path": "microsoft.net.http.headers/2.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Net.Http.Headers.dll",
+        "lib/netstandard2.0/Microsoft.Net.Http.Headers.xml",
+        "microsoft.net.http.headers.2.2.0.nupkg.sha512",
+        "microsoft.net.http.headers.nuspec"
       ]
     },
     "Microsoft.NETCore.Platforms/1.1.0": {
@@ -2039,6 +3972,31 @@
         "skiasharp.nativeassets.win32.nuspec"
       ]
     },
+    "StyleCop.Analyzers/1.1.118": {
+      "sha512": "Onx6ovGSqXSK07n/0eM3ZusiNdB6cIlJdabQhWGgJp3Vooy9AaLS/tigeybOJAobqbtggTamoWndz72JscZBvw==",
+      "type": "package",
+      "path": "stylecop.analyzers/1.1.118",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "THIRD-PARTY-NOTICES.txt",
+        "analyzers/dotnet/cs/StyleCop.Analyzers.CodeFixes.dll",
+        "analyzers/dotnet/cs/StyleCop.Analyzers.dll",
+        "analyzers/dotnet/cs/de-DE/StyleCop.Analyzers.resources.dll",
+        "analyzers/dotnet/cs/en-GB/StyleCop.Analyzers.resources.dll",
+        "analyzers/dotnet/cs/es-MX/StyleCop.Analyzers.resources.dll",
+        "analyzers/dotnet/cs/fr-FR/StyleCop.Analyzers.resources.dll",
+        "analyzers/dotnet/cs/pl-PL/StyleCop.Analyzers.resources.dll",
+        "analyzers/dotnet/cs/pt-BR/StyleCop.Analyzers.resources.dll",
+        "analyzers/dotnet/cs/ru-RU/StyleCop.Analyzers.resources.dll",
+        "stylecop.analyzers.1.1.118.nupkg.sha512",
+        "stylecop.analyzers.nuspec",
+        "tools/install.ps1",
+        "tools/uninstall.ps1"
+      ]
+    },
     "System.AppContext/4.3.0": {
       "sha512": "fKC+rmaLfeIzUhagxY17Q9siv/sPrjjKcfNg1Ic8IlQkZLipo8ljcaZQu4VtI4Jqbzjc2VTjzGLF6WmsRXAEgA==",
       "type": "package",
@@ -2094,19 +4052,33 @@
         "system.appcontext.nuspec"
       ]
     },
-    "System.Buffers/4.3.0": {
-      "sha512": "ratu44uTIHgeBeI0dE8DWvmXVBSo4u7ozRZZHOMmK/JPpYyo0dAfgSiHlpiObMQ5lEtEyIXA40sKRYg5J6A8uQ==",
+    "System.Buffers/4.5.0": {
+      "sha512": "pL2ChpaRRWI/p4LXyy4RgeWlYF2sgfj/pnVMvBqwNFr5cXg7CXNnWZWxrOONLg8VGdFB8oB+EG2Qw4MLgTOe+A==",
       "type": "package",
-      "path": "system.buffers/4.3.0",
+      "path": "system.buffers/4.5.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/netstandard1.1/.xml",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netcoreapp2.0/_._",
         "lib/netstandard1.1/System.Buffers.dll",
-        "system.buffers.4.3.0.nupkg.sha512",
-        "system.buffers.nuspec"
+        "lib/netstandard1.1/System.Buffers.xml",
+        "lib/netstandard2.0/System.Buffers.dll",
+        "lib/netstandard2.0/System.Buffers.xml",
+        "lib/uap10.0.16299/_._",
+        "ref/net45/System.Buffers.dll",
+        "ref/net45/System.Buffers.xml",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard1.1/System.Buffers.dll",
+        "ref/netstandard1.1/System.Buffers.xml",
+        "ref/netstandard2.0/System.Buffers.dll",
+        "ref/netstandard2.0/System.Buffers.xml",
+        "ref/uap10.0.16299/_._",
+        "system.buffers.4.5.0.nupkg.sha512",
+        "system.buffers.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.Collections/4.3.0": {
@@ -2351,25 +4323,33 @@
         "system.diagnostics.debug.nuspec"
       ]
     },
-    "System.Diagnostics.DiagnosticSource/4.3.0": {
-      "sha512": "tD6kosZnTAGdrEa0tZSuFyunMbt/5KYDnHdndJYGqZoNy00XVXyACd5d6KnE1YgYv3ne2CjtAfNXo/fwEhnKUA==",
+    "System.Diagnostics.DiagnosticSource/8.0.0": {
+      "sha512": "c9xLpVz6PL9lp/djOWtk5KPDZq3cSYpmXoJQY524EOtuFl5z9ZtsotpsyrDW40U1DRnQSYvcPKEUV0X//u6gkQ==",
       "type": "package",
-      "path": "system.diagnostics.diagnosticsource/4.3.0",
+      "path": "system.diagnostics.diagnosticsource/8.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/net46/System.Diagnostics.DiagnosticSource.dll",
-        "lib/net46/System.Diagnostics.DiagnosticSource.xml",
-        "lib/netstandard1.1/System.Diagnostics.DiagnosticSource.dll",
-        "lib/netstandard1.1/System.Diagnostics.DiagnosticSource.xml",
-        "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll",
-        "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.xml",
-        "lib/portable-net45+win8+wpa81/System.Diagnostics.DiagnosticSource.dll",
-        "lib/portable-net45+win8+wpa81/System.Diagnostics.DiagnosticSource.xml",
-        "system.diagnostics.diagnosticsource.4.3.0.nupkg.sha512",
-        "system.diagnostics.diagnosticsource.nuspec"
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Diagnostics.DiagnosticSource.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Diagnostics.DiagnosticSource.targets",
+        "lib/net462/System.Diagnostics.DiagnosticSource.dll",
+        "lib/net462/System.Diagnostics.DiagnosticSource.xml",
+        "lib/net6.0/System.Diagnostics.DiagnosticSource.dll",
+        "lib/net6.0/System.Diagnostics.DiagnosticSource.xml",
+        "lib/net7.0/System.Diagnostics.DiagnosticSource.dll",
+        "lib/net7.0/System.Diagnostics.DiagnosticSource.xml",
+        "lib/net8.0/System.Diagnostics.DiagnosticSource.dll",
+        "lib/net8.0/System.Diagnostics.DiagnosticSource.xml",
+        "lib/netstandard2.0/System.Diagnostics.DiagnosticSource.dll",
+        "lib/netstandard2.0/System.Diagnostics.DiagnosticSource.xml",
+        "system.diagnostics.diagnosticsource.8.0.0.nupkg.sha512",
+        "system.diagnostics.diagnosticsource.nuspec",
+        "useSharedDesignerContext.txt"
       ]
     },
     "System.Diagnostics.Tools/4.3.0": {
@@ -4566,6 +6546,114 @@
         "system.text.encoding.extensions.nuspec"
       ]
     },
+    "System.Text.Encodings.Web/8.0.0": {
+      "sha512": "yev/k9GHAEGx2Rg3/tU6MQh4HGBXJs70y7j1LaM1i/ER9po+6nnQ6RRqTJn1E7Xu0fbIFK80Nh5EoODxrbxwBQ==",
+      "type": "package",
+      "path": "system.text.encodings.web/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Text.Encodings.Web.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Text.Encodings.Web.targets",
+        "lib/net462/System.Text.Encodings.Web.dll",
+        "lib/net462/System.Text.Encodings.Web.xml",
+        "lib/net6.0/System.Text.Encodings.Web.dll",
+        "lib/net6.0/System.Text.Encodings.Web.xml",
+        "lib/net7.0/System.Text.Encodings.Web.dll",
+        "lib/net7.0/System.Text.Encodings.Web.xml",
+        "lib/net8.0/System.Text.Encodings.Web.dll",
+        "lib/net8.0/System.Text.Encodings.Web.xml",
+        "lib/netstandard2.0/System.Text.Encodings.Web.dll",
+        "lib/netstandard2.0/System.Text.Encodings.Web.xml",
+        "runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll",
+        "runtimes/browser/lib/net6.0/System.Text.Encodings.Web.xml",
+        "runtimes/browser/lib/net7.0/System.Text.Encodings.Web.dll",
+        "runtimes/browser/lib/net7.0/System.Text.Encodings.Web.xml",
+        "runtimes/browser/lib/net8.0/System.Text.Encodings.Web.dll",
+        "runtimes/browser/lib/net8.0/System.Text.Encodings.Web.xml",
+        "system.text.encodings.web.8.0.0.nupkg.sha512",
+        "system.text.encodings.web.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Text.Json/8.0.3": {
+      "sha512": "hpagS9joOwv6efWfrMmV9MjQXpiXZH72PgN067Ysfr6AWMSD1/1hEcvh/U5mUpPLezEWsOJSuVrmqDIVD958iA==",
+      "type": "package",
+      "path": "system.text.json/8.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "analyzers/dotnet/roslyn3.11/cs/System.Text.Json.SourceGeneration.dll",
+        "analyzers/dotnet/roslyn3.11/cs/cs/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/de/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/es/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/fr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/it/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/ja/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/ko/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/pl/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/pt-BR/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/ru/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/tr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/zh-Hans/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/zh-Hant/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/System.Text.Json.SourceGeneration.dll",
+        "analyzers/dotnet/roslyn4.0/cs/cs/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/de/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/es/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/fr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/it/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/ja/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/ko/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/pl/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/pt-BR/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/ru/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/tr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/zh-Hans/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/zh-Hant/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/System.Text.Json.SourceGeneration.dll",
+        "analyzers/dotnet/roslyn4.4/cs/cs/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/de/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/es/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/fr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/it/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/ja/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/ko/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/pl/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/pt-BR/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/ru/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/tr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/zh-Hans/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/zh-Hant/System.Text.Json.SourceGeneration.resources.dll",
+        "buildTransitive/net461/System.Text.Json.targets",
+        "buildTransitive/net462/System.Text.Json.targets",
+        "buildTransitive/net6.0/System.Text.Json.targets",
+        "buildTransitive/netcoreapp2.0/System.Text.Json.targets",
+        "buildTransitive/netstandard2.0/System.Text.Json.targets",
+        "lib/net462/System.Text.Json.dll",
+        "lib/net462/System.Text.Json.xml",
+        "lib/net6.0/System.Text.Json.dll",
+        "lib/net6.0/System.Text.Json.xml",
+        "lib/net7.0/System.Text.Json.dll",
+        "lib/net7.0/System.Text.Json.xml",
+        "lib/net8.0/System.Text.Json.dll",
+        "lib/net8.0/System.Text.Json.xml",
+        "lib/netstandard2.0/System.Text.Json.dll",
+        "lib/netstandard2.0/System.Text.Json.xml",
+        "system.text.json.8.0.3.nupkg.sha512",
+        "system.text.json.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
     "System.Text.RegularExpressions/4.3.0": {
       "sha512": "RpT2DA+L660cBt1FssIE9CAGpLFdFPuheB7pLpKpn6ZXNby7jDERe8Ua/Ne2xGiwLVG2JOqziiaVCGDon5sKFA==",
       "type": "package",
@@ -4789,6 +6877,37 @@
         "system.threading.tasks.nuspec"
       ]
     },
+    "System.Threading.Tasks.Dataflow/8.0.0": {
+      "sha512": "7V0I8tPa9V7UxMx/+7DIwkhls5ouaEMQx6l/GwGm1Y8kJQ61On9B/PxCXFLbgu5/C47g0BP2CUYs+nMv1+Oaqw==",
+      "type": "package",
+      "path": "system.threading.tasks.dataflow/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Threading.Tasks.Dataflow.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Threading.Tasks.Dataflow.targets",
+        "lib/net462/System.Threading.Tasks.Dataflow.dll",
+        "lib/net462/System.Threading.Tasks.Dataflow.xml",
+        "lib/net6.0/System.Threading.Tasks.Dataflow.dll",
+        "lib/net6.0/System.Threading.Tasks.Dataflow.xml",
+        "lib/net7.0/System.Threading.Tasks.Dataflow.dll",
+        "lib/net7.0/System.Threading.Tasks.Dataflow.xml",
+        "lib/net8.0/System.Threading.Tasks.Dataflow.dll",
+        "lib/net8.0/System.Threading.Tasks.Dataflow.xml",
+        "lib/netstandard2.0/System.Threading.Tasks.Dataflow.dll",
+        "lib/netstandard2.0/System.Threading.Tasks.Dataflow.xml",
+        "lib/netstandard2.1/System.Threading.Tasks.Dataflow.dll",
+        "lib/netstandard2.1/System.Threading.Tasks.Dataflow.xml",
+        "system.threading.tasks.dataflow.8.0.0.nupkg.sha512",
+        "system.threading.tasks.dataflow.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
     "System.Threading.Tasks.Extensions/4.3.0": {
       "sha512": "npvJkVKl5rKXrtl1Kkm6OhOUaYGEiF9wFbppFRWSMoApKzt2PiPHT2Bb8a5sAWxprvdOAtvaARS9QYMznEUtug==",
       "type": "package",
@@ -5005,15 +7124,18 @@
     }
   },
   "projectFileDependencyGroups": {
-    ".NETStandard,Version=v2.1": [
+    "net8.0": [
       "FlareSolverrSharp >= 3.0.7",
       "HtmlAgilityPack >= 1.11.61",
       "HttpClient.Caching >= 1.3.7",
       "HttpToSocks5Proxy >= 1.4.0",
       "ILRepack.Lib.MSBuild.Task >= 2.0.34",
-      "MediaBrowser.Server.Core >= 4.7.9",
+      "Jellyfin.Controller >= 10.9.7",
+      "Microsoft.CodeAnalysis.NetAnalyzers >= 8.0.0",
+      "Microsoft.Extensions.Http >= 8.0.0",
       "Newtonsoft.Json >= 13.0.3",
-      "SkiaSharp >= 2.88.8"
+      "SkiaSharp >= 2.88.8",
+      "StyleCop.Analyzers >= 1.1.118"
     ]
   },
   "packageFolders": {
@@ -5023,9 +7145,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jamie\\OneDrive\\Software\\Programming\\Projects\\Visual Studio 2022\\Projects\\Jellyfin.Plugin.PhoenixAdult\\Jellyfin.Plugin.PhoenixAdult\\PhoenixAdult.csproj",
-      "projectName": "PhoenixAdult",
-      "projectPath": "C:\\Users\\Jamie\\OneDrive\\Software\\Programming\\Projects\\Visual Studio 2022\\Projects\\Jellyfin.Plugin.PhoenixAdult\\Jellyfin.Plugin.PhoenixAdult\\PhoenixAdult.csproj",
+      "projectUniqueName": "C:\\Users\\Jamie\\OneDrive\\Software\\Programming\\Projects\\Visual Studio 2022\\Projects\\Jellyfin.Plugin.PhoenixAdult\\Jellyfin.Plugin.PhoenixAdult\\Jellyfin.Plugin.PhoenixAdult.csproj",
+      "projectName": "Jellyfin.Plugin.PhoenixAdult",
+      "projectPath": "C:\\Users\\Jamie\\OneDrive\\Software\\Programming\\Projects\\Visual Studio 2022\\Projects\\Jellyfin.Plugin.PhoenixAdult\\Jellyfin.Plugin.PhoenixAdult\\Jellyfin.Plugin.PhoenixAdult.csproj",
       "packagesPath": "C:\\Users\\Jamie\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Jamie\\OneDrive\\Software\\Programming\\Projects\\Visual Studio 2022\\Projects\\Jellyfin.Plugin.PhoenixAdult\\Jellyfin.Plugin.PhoenixAdult\\obj\\",
       "projectStyle": "PackageReference",
@@ -5038,7 +7160,7 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "netstandard2.1"
+        "net8.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -5046,8 +7168,8 @@
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "netstandard2.1": {
-          "targetAlias": "netstandard2.1",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "projectReferences": {}
         }
       },
@@ -5063,8 +7185,8 @@
       }
     },
     "frameworks": {
-      "netstandard2.1": {
-        "targetAlias": "netstandard2.1",
+      "net8.0": {
+        "targetAlias": "net8.0",
         "dependencies": {
           "FlareSolverrSharp": {
             "target": "Package",
@@ -5088,9 +7210,19 @@
             "target": "Package",
             "version": "[2.0.34, )"
           },
-          "MediaBrowser.Server.Core": {
+          "Jellyfin.Controller": {
             "target": "Package",
-            "version": "[4.7.9, )"
+            "version": "[10.9.7, )"
+          },
+          "Microsoft.CodeAnalysis.NetAnalyzers": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[8.0.0, )"
+          },
+          "Microsoft.Extensions.Http": {
+            "target": "Package",
+            "version": "[8.0.0, )"
           },
           "Newtonsoft.Json": {
             "target": "Package",
@@ -5099,6 +7231,12 @@
           "SkiaSharp": {
             "target": "Package",
             "version": "[2.88.8, )"
+          },
+          "StyleCop.Analyzers": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[1.1.118, )"
           }
         },
         "imports": [
@@ -5113,11 +7251,11 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
-          "NETStandard.Library": {
+          "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,3 +1,4 @@
+using Jellyfin.Plugin.PhoenixAdult.Configuration;
 using System;
 using System.IO;
 using System.IO.Compression;
@@ -5,14 +6,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using PhoenixAdult.Configuration;
-
-#if __EMBY__
-#else
 // using Sentry;
-#endif
 
-namespace PhoenixAdult.Helpers.Utils
+namespace Jellyfin.Plugin.PhoenixAdult.Helpers.Utils
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1649:File name should match first type name", Justification = "Temp")]
     public struct AnalyticsExeption
@@ -67,8 +63,6 @@ namespace PhoenixAdult.Helpers.Utils
 
             if (!Plugin.Instance.Configuration.DisableAnalytics)
             {
-#if __EMBY__
-#else
                 /*
                 SentrySdk.ConfigureScope(scope =>
                 {
@@ -83,7 +77,6 @@ namespace PhoenixAdult.Helpers.Utils
                 });
                 SentrySdk.CaptureException(exception.Exception);
                 */
-#endif
             }
 
             if (Plugin.Instance.Configuration.EnableDebug)

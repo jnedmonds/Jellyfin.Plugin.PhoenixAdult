@@ -1,3 +1,4 @@
+using Jellyfin.Plugin.PhoenixAdult.Helpers.Utils;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -5,9 +6,8 @@ using System.Threading.Tasks;
 using MediaBrowser.Model.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using PhoenixAdult.Helpers.Utils;
 
-namespace PhoenixAdult.ScheduledTasks
+namespace Jellyfin.Plugin.PhoenixAdult.ScheduledTasks
 {
     public class UpdateDatabase : IScheduledTask
     {
@@ -19,11 +19,7 @@ namespace PhoenixAdult.ScheduledTasks
 
         public string Category => Plugin.Instance.Name;
 
-#if __EMBY__
-        public async Task Execute(CancellationToken cancellationToken, IProgress<double> progress)
-#else
         public async Task ExecuteAsync(IProgress<double> progress, CancellationToken cancellationToken)
-#endif
         {
             await Task.Yield();
             progress?.Report(0);

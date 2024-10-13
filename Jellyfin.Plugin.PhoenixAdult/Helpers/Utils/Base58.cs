@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Numerics;
 
-namespace PhoenixAdult.Helpers.Utils
+namespace Jellyfin.Plugin.PhoenixAdult.Helpers.Utils
 {
     internal static class Base58
     {

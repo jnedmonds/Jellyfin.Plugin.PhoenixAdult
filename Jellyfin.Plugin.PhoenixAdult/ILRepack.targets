@@ -13,10 +13,6 @@
         <!--<InputAssemblies Include="$(OutputPath)Sentry.dll" />-->
     </ItemGroup>
 
-    <ItemGroup Condition="'$(Configuration)'=='Debug.Emby' or '$(Configuration)'=='Release.Emby'">
-      <InputAssemblies Include="$(OutputPath)Newtonsoft.Json.dll" />
-    </ItemGroup>
-
     <ILRepack
       Parallel="true"
       Internalize="true"

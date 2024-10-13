@@ -1,13 +1,13 @@
+using Jellyfin.Plugin.PhoenixAdult.Configuration;
+using Jellyfin.Plugin.PhoenixAdult.Helpers.Utils;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Net;
 using MediaBrowser.Controller.Entities;
-using PhoenixAdult.Configuration;
-using PhoenixAdult.Helpers.Utils;
 
-namespace PhoenixAdult.Helpers
+namespace Jellyfin.Plugin.PhoenixAdult.Helpers
 {
     internal static class Genres
     {

@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug.Emby")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("© DirtyRacer")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("10.8.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("10.8.0.0+build2024-10-13T16:03:11:076Z")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("10.8.0.0+build2024-10-13T16:50:56:624Z")]
 [assembly: System.Reflection.AssemblyProductAttribute("PhoenixAdult")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PhoenixAdult")]
 [assembly: System.Reflection.AssemblyVersionAttribute("10.8.0.0")]

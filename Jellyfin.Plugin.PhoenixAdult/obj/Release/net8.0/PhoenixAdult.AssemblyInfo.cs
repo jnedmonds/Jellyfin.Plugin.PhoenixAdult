@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("© DirtyRacer")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("10.8.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("10.8.0.0+build2024-10-13T16:03:10:958Z")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("10.8.0.0+build2024-10-13T16:50:56:509Z")]
 [assembly: System.Reflection.AssemblyProductAttribute("PhoenixAdult")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PhoenixAdult")]
 [assembly: System.Reflection.AssemblyVersionAttribute("10.8.0.0")]

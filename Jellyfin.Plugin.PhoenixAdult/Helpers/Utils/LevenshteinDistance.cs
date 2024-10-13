@@ -1,6 +1,6 @@
 using System;
 
-namespace PhoenixAdult.Helpers.Utils
+namespace Jellyfin.Plugin.PhoenixAdult.Helpers.Utils
 {
     internal static class LevenshteinDistance
     {

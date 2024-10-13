@@ -8,7 +8,7 @@ using MediaBrowser.Model.Entities;
 using MediaBrowser.Model.Providers;
 using SkiaSharp;
 
-namespace PhoenixAdult.Helpers.Utils
+namespace Jellyfin.Plugin.PhoenixAdult.Helpers.Utils
 {
     internal static class ImageHelper
     {

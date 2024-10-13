@@ -1,7 +1,10 @@
+using Jellyfin.Plugin.PhoenixAdult.Helpers.Utils;
+using Jellyfin.Plugin.PhoenixAdult.Sites;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net.Http;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -9,16 +12,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediaBrowser.Model.Entities;
 using MediaBrowser.Model.Providers;
-using PhoenixAdult.Helpers.Utils;
-using PhoenixAdult.Sites;
 
-#if __EMBY__
-using MediaBrowser.Common.Net;
-#else
-using System.Net.Http;
-#endif
-
-namespace PhoenixAdult.Helpers
+namespace Jellyfin.Plugin.PhoenixAdult.Helpers
 {
     internal static class Helper
     {
@@ -320,18 +315,6 @@ namespace PhoenixAdult.Helpers
             }
         }
 
-#if __EMBY__
-        public static Task<HttpResponseInfo> GetImageResponse(string url, CancellationToken cancellationToken)
-        {
-            return Plugin.Http.GetResponse(new HttpRequestOptions
-            {
-                CancellationToken = cancellationToken,
-                Url = url,
-                EnableDefaultUserAgent = false,
-                UserAgent = HTTP.GetUserAgent(),
-            });
-        }
-#else
         public static Task<HttpResponseMessage> GetImageResponse(string url, CancellationToken cancellationToken)
         {
             var request = new HttpRequestMessage(HttpMethod.Get, url);
@@ -339,7 +322,6 @@ namespace PhoenixAdult.Helpers
 
             return Plugin.Http.CreateClient().SendAsync(request, cancellationToken);
         }
-#endif
 
         public static DateTime GetLinkerTime(Assembly assembly)
         {

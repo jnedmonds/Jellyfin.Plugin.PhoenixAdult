@@ -1,7 +1,11 @@
+using Jellyfin.Plugin.PhoenixAdult.Configuration;
+using Jellyfin.Plugin.PhoenixAdult.Helpers;
+using Jellyfin.Plugin.PhoenixAdult.Helpers.Utils;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
@@ -9,18 +13,8 @@ using MediaBrowser.Controller.Entities;
 using MediaBrowser.Controller.Providers;
 using MediaBrowser.Model.Entities;
 using MediaBrowser.Model.Providers;
-using PhoenixAdult.Configuration;
-using PhoenixAdult.Helpers;
-using PhoenixAdult.Helpers.Utils;
 
-#if __EMBY__
-using MediaBrowser.Common.Net;
-using MediaBrowser.Model.Configuration;
-#else
-using System.Net.Http;
-#endif
-
-namespace PhoenixAdult.Providers
+namespace Jellyfin.Plugin.PhoenixAdult.Providers
 {
     public class ActorImageProvider : IRemoteImageProvider
     {
@@ -108,11 +102,7 @@ namespace PhoenixAdult.Providers
                 ImageType.Primary,
             };
 
-#if __EMBY__
-        public async Task<IEnumerable<RemoteImageInfo>> GetImages(BaseItem item, LibraryOptions libraryOptions, CancellationToken cancellationToken)
-#else
         public async Task<IEnumerable<RemoteImageInfo>> GetImages(BaseItem item, CancellationToken cancellationToken)
-#endif
         {
             Logger.Debug($"ActorImageProvider-GetImages() Starting ********************");
 
@@ -191,11 +181,7 @@ namespace PhoenixAdult.Providers
             return images;
         }
 
-#if __EMBY__
-        public Task<HttpResponseInfo> GetImageResponse(string url, CancellationToken cancellationToken)
-#else
         public Task<HttpResponseMessage> GetImageResponse(string url, CancellationToken cancellationToken)
-#endif
         {
             return Helper.GetImageResponse(url, cancellationToken);
         }

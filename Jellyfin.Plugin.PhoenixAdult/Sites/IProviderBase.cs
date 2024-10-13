@@ -6,7 +6,7 @@ using MediaBrowser.Controller.Entities;
 using MediaBrowser.Controller.Providers;
 using MediaBrowser.Model.Providers;
 
-namespace PhoenixAdult.Sites
+namespace Jellyfin.Plugin.PhoenixAdult.Sites
 {
     internal interface IProviderBase
     {

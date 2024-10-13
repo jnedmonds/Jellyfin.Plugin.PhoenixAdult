@@ -1,3 +1,4 @@
+using Jellyfin.Plugin.PhoenixAdult.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,9 +7,8 @@ using System.Threading.Tasks;
 using MediaBrowser.Controller.Entities;
 using MediaBrowser.Controller.Library;
 using MediaBrowser.Model.Tasks;
-using PhoenixAdult.Helpers;
 
-namespace PhoenixAdult.ScheduledTasks
+namespace Jellyfin.Plugin.PhoenixAdult.ScheduledTasks
 {
     public class CleanupActors : IScheduledTask
     {
@@ -27,11 +27,7 @@ namespace PhoenixAdult.ScheduledTasks
 
         public string Category => Plugin.Instance.Name;
 
-#if __EMBY__
-        public async Task Execute(CancellationToken cancellationToken, IProgress<double> progress)
-#else
         public async Task ExecuteAsync(IProgress<double> progress, CancellationToken cancellationToken)
-#endif
         {
             await Task.Yield();
             progress?.Report(0);
@@ -44,11 +40,7 @@ namespace PhoenixAdult.ScheduledTasks
 
                 progress?.Report((double)idx / items.Count * 100);
 
-#if __EMBY__
-                peoples = this.libraryManager.GetItemPeople(item);
-#else
                 peoples = this.libraryManager.GetPeople(item);
-#endif
 
                 if (peoples != null && peoples.Any())
                 {
