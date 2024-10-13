@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Jamie\\OneDrive\\Software\\Programming\\Projects\\Visual Studio 2022\\Projects\\jnedmonds\\Jellyfin.Plugin.PhoenixAdult\\",
+  "WorkspaceRootPath": "C:\\Users\\Jamie\\OneDrive\\Software\\Programming\\Projects\\Visual Studio 2022\\Projects\\Jellyfin.Plugin.PhoenixAdult\\",
   "Documents": [],
   "DocumentGroupContainers": [
     {
@@ -18,10 +18,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             }
           ]
         }
