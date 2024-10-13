@@ -4,8 +4,7 @@ echo off
 cls
 
 echo Assembyname: 		%1
-echo Assembyversion:	%2
-
+echo Assemblyversion:	%2
 echo Configuration:		%3
 echo OutDir:			%4
 echo ProjectDir: 		%5
@@ -14,48 +13,17 @@ echo SolutionName: 		%7
 echo TargetFileName: 	%8
 echo TargetPath: 		%9
 
-if %3%=="Debug" (
-	echo "Jellyfin - Debug configuration"
-	
-	del /F %6..\jellyfin_10.9.11-amd64\jellyfin\jellyfin-data\plugins\%1_%2\%8
-	mkdir %6..\jellyfin_10.9.11-amd64\jellyfin\jellyfin-data\plugins\%1_%2
-	copy /Y %9 %6..\jellyfin_10.9.11-amd64\jellyfin\jellyfin-data\plugins\%1_%2\
-	copy /Y %4%7.pdb %6..\jellyfin_10.9.11-amd64\jellyfin\jellyfin-data\plugins\%1_%2\
-	goto end:
-)
+echo "Outputing the parameters to a build file - %4\build.txt"
 
-if %3%=="Release" (
-	echo "Jellyfin - Release configuration"
-	
- 	del /F %6..\jellyfin_10.9.11-amd64\jellyfin\jellyfin-data\plugins\%1_%2\%8
-	mkdir %6..\jellyfin_10.9.11-amd64\jellyfin\jellyfin-data\plugins\%1_%2
-	copy /Y %9 %6..\jellyfin_10.9.11-amd64\jellyfin\jellyfin-data\plugins\%1_%2\
-	copy /Y %4%7.pdb %6..\jellyfin_10.9.11-amd64\jellyfin\jellyfin-data\plugins\%1_%2\
-	goto end:
-)
-
-if %3%=="Debug.Emby" (
-	echo "Emby - Debug.Emby configuration"
- 
-	del /F %6..\embyserver-win-x64-4.8.10.0\programdata\plugins\%8
-	copy /Y %9 %6..\embyserver-win-x64-4.8.10.0\programdata\plugins\
-	copy /Y %4%7.pdb %6..\embyserver-win-x64-4.8.10.0\programdata\plugins\
-	goto end:
-)
-
-if %3%=="Release.Emby" (
-	echo "Emby - Release.Emby configuration"
-	
-	del /F %6..\embyserver-win-x64-4.8.10.0\programdata\plugins\%8
-	copy /Y %9 %6..\embyserver-win-x64-4.8.10.0\programdata\plugins\
-	copy /Y %4%7.pdb %6..\embyserver-win-x64-4.8.10.0\programdata\plugins\
-	goto end:
-)
-
-echo "No configuration run"
-echo "Configuration: **%3**"
-
-:end
+echo ASSEMBLYNAME=%1>%5\build.txt
+echo ASSEMBLYVERSION=%2>>%5\build.txt
+echo CONFIGURATION=%3>>%5\build.txt
+echo OUTDIR=%4>>%5\build.txt
+echo PROJECTDIR=%5>>%5\build.txt
+echo SOLUTIONDIR=%6>>%5\build.txt
+echo SOLUTIONNAME=%7>>%5\build.txt
+echo TARGETFILENAME=%8>>%5\build.txt
+echo TARGETPATH=%9>>%5\build.txt
 
 echo on
 endlocal
