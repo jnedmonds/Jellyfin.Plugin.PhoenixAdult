@@ -94,6 +94,7 @@ namespace PhoenixAdult.Providers
 
                 Logger.Debug($"MovieImageProvider-GetImages() Clear images returned: {images.Count()} images");
             }
+
             Logger.Debug($"MovieImageProvider-GetImages() Leaving ********************");
 
             return images;

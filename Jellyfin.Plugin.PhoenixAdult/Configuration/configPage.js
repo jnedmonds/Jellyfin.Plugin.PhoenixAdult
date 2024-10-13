@@ -14,7 +14,7 @@ define(['baseView', 'loading', 'emby-input', 'emby-button', 'emby-checkbox', 'em
 
         loading.show();
 
-        ApiClient.getPluginConfiguration("91FDA366-558B-4A18-AAB8-2DC8627D2EFC").then(function (config) {
+        ApiClient.getPluginConfiguration(phoenixAdultConfig.pluginUniqueId).then(function (config) {
 
             config.DisableCaching = form.querySelector('.DisableCaching').checked;
             config.DisableSSLCheck = form.querySelector('.DisableSSLCheck').checked;
@@ -37,7 +37,7 @@ define(['baseView', 'loading', 'emby-input', 'emby-button', 'emby-checkbox', 'em
             config.JAVActorNamingStyle = form.querySelector('.JAVActorNamingStyle').value;
             config.GenresSortingStyle = form.querySelector('.GenresSortingStyle').value;
 
-            ApiClient.updatePluginConfiguration("91FDA366-558B-4A18-AAB8-2DC8627D2EFC", config).then(Dashboard.processPluginConfigurationUpdateResult);
+            ApiClient.updatePluginConfiguration(phoenixAdultConfig.pluginUniqueId, config).then(Dashboard.processPluginConfigurationUpdateResult);
         });
 
         // Disable default form submission
@@ -59,7 +59,7 @@ define(['baseView', 'loading', 'emby-input', 'emby-button', 'emby-checkbox', 'em
         var instance = this;
 
         loading.show();
-        ApiClient.getPluginConfiguration("91FDA366-558B-4A18-AAB8-2DC8627D2EFC").then(function (config) {
+        ApiClient.getPluginConfiguration(phoenixAdultConfig.pluginUniqueId).then(function (config) {
             var view = instance.view;
 
             view.querySelector('.DisableCaching').checked = config.DisableCaching;

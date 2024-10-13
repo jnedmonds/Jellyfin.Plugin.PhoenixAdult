@@ -4,9 +4,9 @@
     <TargetFramework Condition="'$(Configuration)'=='Debug' or '$(Configuration)'=='Release'">net8.0</TargetFramework>
     <TargetFramework Condition="'$(Configuration)'=='Debug.Emby' or '$(Configuration)'=='Release.Emby'">netstandard2.1</TargetFramework>
     <RootNamespace>PhoenixAdult</RootNamespace>
-    <AssemblyVersion>10.8.0.1</AssemblyVersion>
-    <FileVersion>10.8.0.1</FileVersion>
-    <InformationalVersion>10.8.0.1</InformationalVersion>
+    <AssemblyVersion>10.8.0.0</AssemblyVersion>
+    <FileVersion>10.8.0.0</FileVersion>
+    <InformationalVersion>10.8.0.0</InformationalVersion>
     <SourceRevisionId>build$([System.DateTime]::UtcNow.ToString("yyyy-MM-ddTHH:mm:ss:fffZ"))</SourceRevisionId>
     <Copyright>© DirtyRacer</Copyright>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -83,7 +83,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="cmd /C del /F &quot;$(SolutionDir)..\embyserver-win-x64-4.8.10.0\programdata\plugins\$(TargetFileName)&quot;&#xD;&#xA;cmd /C copy /Y &quot;$(TargetPath)&quot; &quot;$(SolutionDir)..\embyserver-win-x64-4.8.10.0\programdata\plugins\&quot; &#xD;&#xA;cmd /C copy /Y &quot;$(OutDir)$(SolutionName).pdb&quot; &quot;$(SolutionDir)..\embyserver-win-x64-4.8.10.0\programdata\plugins\&quot; " />
+    <Exec Command="call postbuild.bat &quot;$(AssemblyName)&quot; &quot;$(AssemblyVersion)&quot; &quot;$(Configuration)&quot; &quot;$(OutDir)&quot; &quot;$(ProjectDir)&quot; &quot;$(SolutionDir)&quot; &quot;$(SolutionName)&quot; &quot;$(TargetFileName)&quot; &quot;$(TargetPath)&quot;" />
   </Target>
 
 </Project>

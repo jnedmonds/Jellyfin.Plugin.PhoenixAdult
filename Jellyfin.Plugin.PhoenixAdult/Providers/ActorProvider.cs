@@ -102,6 +102,7 @@ namespace PhoenixAdult.Providers
                     break;
                 }
             }
+
             Logger.Debug($"ActorProvider-GetSearchResults() Leaving ********************");
 
             return result;

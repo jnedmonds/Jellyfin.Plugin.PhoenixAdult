@@ -185,6 +185,7 @@ namespace PhoenixAdult.Providers
                     {
                         result = result.OrderByDescending(o => 100 - LevenshteinDistance.Calculate(searchTitle, Helper.GetClearTitle(o.Name), StringComparison.OrdinalIgnoreCase)).ToList();
                     }
+
                     Logger.Debug($"MovieProvider-GetSearchResults() Search results: Found {result.Count()} results for searchTitle: {searchTitle}");
                 }
                 else

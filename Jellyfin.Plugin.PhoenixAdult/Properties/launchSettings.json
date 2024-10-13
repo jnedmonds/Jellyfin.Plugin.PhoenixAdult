@@ -1,9 +1,15 @@
 {
   "profiles": {
-    "Profile 1": {
+    "Emby": {
       "commandName": "Executable",
       "executablePath": "C:\\Users\\Jamie\\OneDrive\\Software\\Programming\\Projects\\Visual Studio 2022\\Projects\\embyserver-win-x64-4.8.10.0\\system\\EmbyServer.exe",
       "workingDirectory": "C:\\Users\\Jamie\\OneDrive\\Software\\Programming\\Projects\\Visual Studio 2022\\Projects\\embyserver-win-x64-4.8.10.0"
+    },
+    "Jellyfin": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\Jamie\\OneDrive\\Software\\Programming\\Projects\\Visual Studio 2022\\Projects\\jellyfin_10.9.11-amd64\\jellyfin\\jellyfin.exe",
+      "commandLineArgs": "--datadir=\"jellyfin-data\"",
+      "workingDirectory": "C:\\Users\\Jamie\\OneDrive\\Software\\Programming\\Projects\\Visual Studio 2022\\Projects\\jellyfin_10.9.11-amd64\\jellyfin"
     }
   }
 }

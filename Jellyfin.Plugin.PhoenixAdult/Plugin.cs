@@ -7,9 +7,6 @@ using MediaBrowser.Model.Serialization;
 using PhoenixAdult.Configuration;
 using System.IO;
 using MediaBrowser.Model.Drawing;
-
-
-
 #if __EMBY__
 using MediaBrowser.Common.Net;
 using MediaBrowser.Model.Logging;
@@ -24,6 +21,10 @@ using Microsoft.Extensions.Logging;
 
 namespace PhoenixAdult
 {
+    internal interface IHasThumbImage
+    {
+    }
+
     public class Plugin : BasePlugin<PluginConfiguration>, IHasWebPages, IHasThumbImage
     {
 #if __EMBY__
@@ -70,24 +71,28 @@ namespace PhoenixAdult
 
         public Stream GetThumbImage()
         {
-            var type = GetType();
+            var type = this.GetType();
             return type.Assembly.GetManifestResourceStream(type.Namespace + ".plugin.png");
         }
-        public ImageFormat ThumbImageFormat => ImageFormat.Png;
+
+        public ImageFormat GetThumbImageFormat()
+        {
+            return ImageFormat.Png;
+        }
 
         public IEnumerable<PluginPageInfo> GetPages() => new[]
-       {
+        {
             new PluginPageInfo
             {
                 Name = "phoenixadult",
-                EmbeddedResourcePath = GetType().Namespace + ".Configuration.configPage.html",
+                EmbeddedResourcePath = this.GetType().Namespace + ".Configuration.configPage.html",
                 DisplayName = "Phoenix Adult",
             },
             new PluginPageInfo
             {
                 Name = "phoenixadultjs",
-                EmbeddedResourcePath = GetType().Namespace + ".Configuration.configPage.js"
-            }
+                EmbeddedResourcePath = this.GetType().Namespace + ".Configuration.configPage.js",
+            },
         };
     }
 }
